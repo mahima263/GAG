@@ -2472,6 +2472,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
+    <script>
+    /* Init AOS as soon as the DOM is ready (main.js re-inits on window.load, which waits for every image —
+       that is what made the sections below the banner appear late). */
+    (function(){
+      function go(){ if (window.AOS) AOS.init({ duration: 600, easing: 'ease-out-cubic', offset: 40, once: true, mirror: false }); }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
+    })();
+    </script>
     <script src="assets/vendor/gsap/gsap.min.js"></script>
     <script src="assets/vendor/gsap/ScrollTrigger.min.js"></script>
     <script>
