@@ -1,57 +1,3 @@
-<!-- <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  //echo "<pre>"; print_r($_POST); echo "</pre>";
-  $name = htmlentities($_POST['name'], ENT_QUOTES, 'UTF-8');
-  $email = htmlentities($_POST['email'], ENT_QUOTES, 'UTF-8');
-  $currency = htmlentities($_POST['currency'], ENT_QUOTES, 'UTF-8');
-  $phone = htmlentities($_POST['phone'], ENT_QUOTES, 'UTF-8');
-  $pannumber = htmlentities(strtoupper($_POST['pannumber']), ENT_QUOTES, 'UTF-8');
-  $pattern = "/[a-zA-z]{5}\d{4}[a-zA-Z]{1}/";
-  $valueMatch =  preg_match($pattern, $pannumber);
-  if ((strlen($pannumber)==10 and $valueMatch == 1) or strlen($pannumber)==0) {
-    $anonymous = htmlentities($_POST['anonymous'], ENT_QUOTES, 'UTF-8');
-    $select_category = htmlentities($_POST['select_category'], ENT_QUOTES, 'UTF-8');
-    $program = htmlentities($_POST['program'], ENT_QUOTES, 'UTF-8');
-    $department = htmlentities($_POST['department'], ENT_QUOTES, 'UTF-8');
-    $YOG = htmlentities($_POST['Year_of_Graduation'], ENT_QUOTES, 'UTF-8');
-    $roll_no = htmlentities($_POST['roll_no'], ENT_QUOTES, 'UTF-8');
-    $display_method = htmlentities($_POST['display_method'], ENT_QUOTES, 'UTF-8');
-    $address = '';
-    $city = '';
-    $state = '';
-    $name_display = '';
-    $country = htmlentities($_POST['country'], ENT_QUOTES, 'UTF-8');
-    $pincode = '';
-    $Amount = htmlentities($_POST['amount'], ENT_QUOTES, 'UTF-8');
-    if ($Amount=='other'){
-      $Amount = htmlentities($_POST['otherAmount'], ENT_QUOTES, 'UTF-8');
-    }
-    $purpose = htmlentities($_POST['purpose'], ENT_QUOTES, 'UTF-8');
-    $donationtime = htmlentities($_POST['donationtime'], ENT_QUOTES, 'UTF-8');
-    if($Amount <= 500000 ){
-      if ($donationtime == 'one-time' ){
-        include('pay.php');
-      }
-      else{
-        
-        $recurringFrequency = htmlentities($_POST['recurring-frequency'], ENT_QUOTES, 'UTF-8');
-        $time_end = htmlentities($_POST['time_end'], ENT_QUOTES, 'UTF-8');
-        $class_from = '';
-        include('recurring-pay.php');
-      }
-    }
-    else{
-      echo "<script>alert('Amount should not be grater than 5 Lakhs');</script>";
-    }
-  }
-}
-include('donate_common.php');
-$Purpose = "Annual Gift Programme";
-include('data.php');
-$dbTotal = total_donations($Purpose, 90, '2025-26'); // from database
-$finalTotal = $dbTotal + 233966;
-?> -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1394,6 +1340,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li><a href="#contribution">Impact</a></li>
                     <li><a href="#rewards">Rewards</a></li>
                     <li><a href="#stories">Stories of Possibility</a></li>
+                    <li><a href="#ways-to-give">Ways to Contribute</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none" aria-label="Menu"><svg class="ag-burger" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></i>
             </nav>
@@ -1417,6 +1364,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container ag-hero__inner">
             <div class="ag-hero__text">
                 <h1 class="ag-hero__title"><span class="ag-hero__annual">Annual</span><br><span class="ag-hero__impact">Giving</span></h1>
+                <p class="ag-hero__tagline">
+                    <span class="ag-hero__tag1"><span class="ag-hero__rule" aria-hidden="true"></span><span class="ag-hero__tagtext">Built by Generations.</span></span>
+                    <span class="ag-hero__tag2">Carried Forward <strong class="ag-hero__hl">by Us.</strong></span>
+                </p>
             </div>
         <div class="hero-content ag-hero__form">
             <div class="hero-form-container">
@@ -1540,7 +1491,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <p>Please provide your details</p>
                         </div>
 
-                        <form id="donationForm" method="post" action="">
+                        <form id="donationForm" method="post" action="https://iitk.ac.in/dora/annualgiving/">
                             <!-- Donation Summary at Top -->
                             <div class="selected-donation-display show" style="margin-bottom: 20px;">
                                 <div class="donation-summary">
@@ -1684,6 +1635,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div style="text-align: center;">
                 <a href="#" id="proceedButton" class="proceed-button" target="_blank">Proceed to Payment</a>
             </div>
+        </div>
+    </div>
+
+    <!-- Campaign Film Modal -->
+    <div id="agFilmModal" class="ag-film-modal" role="dialog" aria-modal="true" aria-label="Greater Than Us – The IIT Kanpur Campaign Film" hidden>
+        <div class="ag-film-modal__backdrop" data-film-close></div>
+        <div class="ag-film-modal__dialog">
+            <button type="button" class="ag-film-modal__close" data-film-close aria-label="Close video"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+            <div class="ag-film-modal__frame" id="agFilmFrame"></div>
+            <p class="ag-film-modal__fallback">Video not playing? <a href="https://www.youtube.com/watch?v=vtjF4dYxnJs" target="_blank" rel="noopener">Watch it on YouTube</a></p>
         </div>
     </div>
 
@@ -1863,248 +1824,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <p>As part of <em>Greater Than Us &ndash; The IIT Kanpur Campaign</em>, Annual Giving connects individual contributions to a larger institutional purpose. Every gift, regardless of its size, helps carry forward what earlier generations built and create new possibilities for those who follow.</p>
                     </div>
 
-                    <div class="ag-card" id="ag-progress" data-aos="fade-left" data-aos-delay="100">
-                        <h3 class="ag-card__title">A Collective Commitment in Action</h3>
-                        <p class="ag-card__by">(by March 2026)</p>
-
-                        <div class="ag-card__row">
-                            <div class="ag-card__stat">
-                                <span class="ag-card__label">Raised so far</span>
-                                <span class="ag-card__inr">₹ <span id="uniquegoal-raised" data-raised="<?php echo $finalTotal; ?>"><?php echo number_format($finalTotal, 0, '.', ','); ?></span></span>
-                                <span class="ag-card__usd">≈ <span id="ag-raised-usd">$0</span></span>
-                            </div>
-                            <div class="ag-card__stat ag-card__stat--right">
-                                <span class="ag-card__label">Goal</span>
-                                <span class="ag-card__inr">₹ <span id="uniquegoal-goal" data-goal="50000000">5.00 Cr</span></span>
-                                <span class="ag-card__usd">≈ <span id="ag-goal-usd">$526K</span></span>
-                            </div>
-                        </div>
-
-                        <div class="ag-bar" aria-hidden="true">
-                            <div class="ag-bar__fill" id="uniquegoal-fill"><span class="ag-bar__pct"><span id="uniquegoal-percent">0</span>%</span></div>
-                        </div>
-
-                        <p class="ag-card__contrib"><span class="contributor-number" id="ag-contrib-number"><?php echo donor_count($Purpose, '2025-26'); ?></span> Contributors</p>
-
-                        <p class="donation-line">Giving IIT Kanpur the <span class="highlight-text">Freedom to Go Further.</span></p>
-                        <p class="donation-subline">The amount we raise is one measure of progress. Its real value lies in the opportunities we create for IIT Kanpur's students and faculty, today and for generations to come.</p>
-
-                        <a href="contribute.html" class="gtu-btn cta-donate-btn" target="_blank">See Ways to Contribute</a>
-
-                        <p class="note-text"><strong>Note (Outside India):</strong> Online donations reflect within 5–7 working days; cheque donations may take up to 30 days.</p>
+                    <div class="ag-film" data-aos="fade-left" data-aos-delay="100">
+                        <button type="button" class="ag-film__poster" id="agFilmOpen" aria-label="Play the Greater Than Us campaign film">
+                            <img src="https://img.youtube.com/vi/vtjF4dYxnJs/maxresdefault.jpg" alt="Greater Than Us – The IIT Kanpur Campaign Film" loading="lazy" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/vtjF4dYxnJs/hqdefault.jpg'">
+                            <span class="ag-film__caption"><span class="ag-film__eyebrow">Watch the film</span><span class="ag-film__title">Greater Than Us &ndash; The IIT Kanpur Campaign</span></span>
+                            <span class="ag-film__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+                        </button>
                     </div>
 
                 </div>
             </div>
-           <style>
-            /* ===============================
-   UNIQUE GOAL SECTION
-================================ */
+        </section>
 
-.uniquegoal-section {
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    font-family: 'Lato', sans-serif;
-    transition: all 0.4s ease;
-    text-align: center;
-}
+        <!-- Progress Section (full width) -->
+        <section id="ag-progress" class="ag-progress">
+            <div class="container">
+                <div class="ag-progress__head" data-aos="fade-up">
+                    <span class="gtu-eyebrow">A Collective Commitment in Action</span>
+                </div>
 
-.uniquegoal-section:hover {
-    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
-    transform: translateY(-4px);
-}
+                <div class="ag-progress__meter" data-aos="fade-up" data-aos-delay="100">
+                    <div class="ag-progress__row">
+                        <div class="ag-progress__stat">
+                            <span class="ag-progress__label">Raised so far</span>
+                            <span class="ag-progress__inr">&#8377; <span id="uniquegoal-raised" data-raised="0">0</span></span>
+                            <span class="ag-progress__usd">&asymp; <span id="ag-raised-usd">$0</span></span>
+                        </div>
+                        <div class="ag-progress__contrib">
+                            <span class="contributor-number" id="ag-contrib-number" data-count="0">0</span>
+                            <span class="ag-progress__contrib-label">Contributors</span>
+                        </div>
+                        <div class="ag-progress__stat ag-progress__stat--right">
+                            <span class="ag-progress__label">Goal</span>
+                            <span class="ag-progress__inr">&#8377; <span id="uniquegoal-goal" data-goal="50000000">5.00 Cr</span></span>
+                            <span class="ag-progress__usd">&asymp; <span id="ag-goal-usd">$526K</span></span>
+                        </div>
+                    </div>
 
-/* ===============================
-   HEADINGS
-================================ */
+                    <div class="ag-bar" role="progressbar" aria-label="Progress towards the Annual Giving goal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="uniquegoal-bar">
+                        <div class="ag-bar__track"></div>
+                        <div class="ag-bar__fill" id="uniquegoal-fill"><span class="ag-bar__shine"></span></div>
+                        <div class="ag-bar__marker" id="uniquegoal-marker"><span class="ag-bar__pct"><span id="uniquegoal-percent">0</span>%</span></div>
+                    </div>
+                    <div class="ag-bar__scale" aria-hidden="true"><span>0</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></div>
+                </div>
 
-.uniquegoal-heading {
-    color: #B04B3B;
-    font-size: 1.4rem;
-    letter-spacing: 0.6px;
-    line-height: 1.4;
-}
-
-.timeline-text {
-    font-size: 0.9rem;
-    color: #B04B34;
-    font-style: italic;
-}
-
-/* ===============================
-   PROGRESS BAR
-================================ */
-
-.uniquegoal-progress-container {
-    width: 100%;
-    height: 26px;
-    border-radius: 50px;
-    background-color: #f6f6f6;
-    position: relative;
-    overflow: hidden;
-}
-
-.uniquegoal-progress-fill {
-    height: 100%;
-    width: 0%;
-    border-radius: 50px;
-    background: linear-gradient(90deg, #7A291F, #9C3F32, #B04B3B);
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-    transition: width 0.8s ease-in-out;
-}
-
-/* 🔥 FIXED PERCENT TEXT - Now visible on all backgrounds */
-.uniquegoal-progress-text {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #333;
-    pointer-events: none;
-    z-index: 10;
-    text-shadow: 
-        0 0 3px rgba(255, 255, 255, 0.9),
-        0 0 5px rgba(255, 255, 255, 0.7),
-        0 0 7px rgba(255, 255, 255, 0.5);
-    min-width: 40px;
-    text-align: center;
-    padding: 2px 6px;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(2px);
-}
-
-/* When progress is high, change text color to white for better contrast */
-.uniquegoal-progress-container .uniquegoal-progress-text.high-progress {
-    color: #fff;
-    text-shadow: 
-        0 0 3px rgba(0, 0, 0, 0.9),
-        0 0 5px rgba(0, 0, 0, 0.7),
-        0 0 7px rgba(0, 0, 0, 0.5);
-    background: rgba(0, 0, 0, 0.2);
-}
-
-/* ===============================
-   AMOUNT TEXT
-================================ */
-
-.inr-text {
-    font-size: 0.9rem;
-    color: #B04B3B;
-    font-weight: 600;
-}
-
-/* ===============================
-   NOTE BOX
-================================ */
-
-.note-text {
-    background: rgba(176, 75, 59, 0.08);
-    border-left: 4px solid #B04B3B;
-    padding: 10px 14px;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    color: #444;
-    font-style: italic;
-    text-align: left;
-}
-
-.note-text strong {
-    color: #B04B3B;
-    font-style: normal;
-}
-
-/* ===============================
-   DONATION MESSAGE
-================================ */
-
-.donation-message {
-    font-family: 'Lato', sans-serif;
-    color: #444;
-    text-align: center;
-    line-height: 1.6;
-}
-
-.donation-line {
-    font-size: 1.05rem;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    margin-bottom: 6px;
-}
-
-.highlight-text {
-    color: #B04B3B;
-    font-weight: 700;
-}
-
-/* ===============================
-   CONTRIBUTORS COUNT
-================================ */
-
-.contributors-count {
-    display: inline-block;
-    background: rgba(176, 75, 59, 0.08);
-    border-radius: 30px;
-    padding: 6px 22px;
-    margin: 12px auto;
-    border: 1px solid rgba(176, 75, 59, 0.15);
-    box-shadow: 0 2px 6px rgba(176, 75, 59, 0.08);
-    transition: all 0.3s ease-in-out;
-}
-
-.contributors-count:hover {
-    background: rgba(176, 75, 59, 0.12);
-    transform: translateY(-2px);
-}
-
-.contributors-text {
-    font-size: 1rem;
-    letter-spacing: 0.3px;
-    color: #333;
-    font-weight: 500;
-}
-
-.contributor-number {
-    color: #B04B3B;
-    font-weight: 700;
-    font-size: 1.1rem;
-}
-
-/* ===============================
-   RESPONSIVE
-================================ */
-
-@media (max-width: 768px) {
-    .uniquegoal-heading {
-        font-size: 1.15rem;
-    }
-
-    .uniquegoal-progress-container {
-        height: 22px;
-    }
-
-    .uniquegoal-progress-text {
-        font-size: 0.85rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .uniquegoal-progress-container {
-        height: 20px;
-    }
-
-    .uniquegoal-progress-text {
-        font-size: 0.8rem;
-    }
-
-    .donation-line {
-        font-size: 0.95rem;
-    }
-}
-
-           </style>
+                <div class="ag-progress__foot" data-aos="fade-up" data-aos-delay="150">
+                    <a href="#ways-to-give" class="gtu-btn cta-donate-btn">See Ways to Contribute</a>
+                    <p class="ag-progress__note"><strong>Note (Outside India):</strong> Online donations reflect within 5&ndash;7 working days; cheque donations may take up to 30 days.</p>
+                </div>
+            </div>
         </section>
 
         <!-- Impact Section -->
@@ -2116,21 +1885,64 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <p>One annual gift. Flexible support for IIT Kanpur's evolving priorities.</p>
                 </div>
                 <div class="ag-pillars">
-                    <a class="ag-pillar ag-pillar--olive" data-aos="fade-up" data-aos-delay="0" href="https://iitk.ac.in/dora/greaterthanus/priorities/foundation.html" target="_blank" rel="noopener">
-                        <img class="ag-pillar__icon" src="assets/gtu/icon-spiral-white.png" alt="" aria-hidden="true">
-                        <h3>Foundation</h3>
-                        <p>Spaces that support learning and discovery.</p>
-                    </a>
-                    <a class="ag-pillar ag-pillar--gold" data-aos="fade-up" data-aos-delay="120" href="https://iitk.ac.in/dora/greaterthanus/priorities/talent.html" target="_blank" rel="noopener">
-                        <img class="ag-pillar__icon" src="assets/gtu/icon-bicycle-white.png" alt="" aria-hidden="true">
-                        <h3>Talent</h3>
-                        <p>Opportunities for students and faculty.</p>
-                    </a>
-                    <a class="ag-pillar ag-pillar--rose" data-aos="fade-up" data-aos-delay="240" href="https://iitk.ac.in/dora/greaterthanus/priorities/frontier.html" target="_blank" rel="noopener">
-                        <img class="ag-pillar__icon" src="assets/gtu/icon-flower-white.png" alt="" aria-hidden="true">
-                        <h3>Frontier</h3>
-                        <p>Research that moves ideas into application.</p>
-                    </a>
+                    <div class="ag-pillar ag-pillar--olive" data-aos="fade-up" data-aos-delay="0" tabindex="0" role="button" aria-pressed="false" aria-label="Foundation – tap to see what your gift supports">
+                        <div class="ag-pillar__inner">
+                            <div class="ag-pillar__face ag-pillar__front">
+                                <img class="ag-pillar__icon" src="assets/gtu/icon-spiral-white.png" alt="" aria-hidden="true">
+                                <h3>Foundation</h3>
+                                <p>Spaces that support learning and discovery.</p>
+                                <span class="ag-pillar__hint"><span>See what it supports</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                            </div>
+                            <div class="ag-pillar__face ag-pillar__back">
+                                <h3>Foundation</h3>
+                                <ul class="ag-pillar__list">
+                                    <li>Research facilities</li>
+                                    <li>Academic spaces</li>
+                                    <li>Student life &amp; housing</li>
+                                    <li>Wellbeing &amp; medical infrastructure</li>
+                                    <li>Campus development</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ag-pillar ag-pillar--gold" data-aos="fade-up" data-aos-delay="120" tabindex="0" role="button" aria-pressed="false" aria-label="Talent – tap to see what your gift supports">
+                        <div class="ag-pillar__inner">
+                            <div class="ag-pillar__face ag-pillar__front">
+                                <img class="ag-pillar__icon" src="assets/gtu/icon-bicycle-white.png" alt="" aria-hidden="true">
+                                <h3>Talent</h3>
+                                <p>Opportunities for students and faculty.</p>
+                                <span class="ag-pillar__hint"><span>See what it supports</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                            </div>
+                            <div class="ag-pillar__face ag-pillar__back">
+                                <h3>Talent</h3>
+                                <ul class="ag-pillar__list">
+                                    <li>Scholarships &amp; fellowships</li>
+                                    <li>Faculty support &amp; chairs</li>
+                                    <li>Student opportunities</li>
+                                    <li>Entrepreneurship</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ag-pillar ag-pillar--rose" data-aos="fade-up" data-aos-delay="240" tabindex="0" role="button" aria-pressed="false" aria-label="Frontier – tap to see what your gift supports">
+                        <div class="ag-pillar__inner">
+                            <div class="ag-pillar__face ag-pillar__front">
+                                <img class="ag-pillar__icon" src="assets/gtu/icon-flower-white.png" alt="" aria-hidden="true">
+                                <h3>Frontier</h3>
+                                <p>Research that moves ideas into application.</p>
+                                <span class="ag-pillar__hint"><span>See what it supports</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+                            </div>
+                            <div class="ag-pillar__face ag-pillar__back">
+                                <h3>Frontier</h3>
+                                <ul class="ag-pillar__list">
+                                    <li>Quantum, AI &amp; MedTech</li>
+                                    <li>Drone technologies</li>
+                                    <li>Sustainability</li>
+                                    <li>Translational research &amp; innovation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2144,8 +1956,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="col-lg-3 col-md-6">
                         <div class="contrib-stats-item">
                             <span class="contrib-stats-number">
-                                <span data-purecounter-start="0" data-purecounter-end="186"
-                                    data-purecounter-duration="2" class="purecounter">186</span>+
+                                <span data-purecounter-start="0" data-purecounter-end="550"
+                                    data-purecounter-duration="2" class="purecounter">550</span>+
                             </span>
                             <p class="contrib-stats-label">Scholarships</p>
                         </div>
@@ -2153,8 +1965,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="col-lg-3 col-md-6">
                         <div class="contrib-stats-item">
                             <span class="contrib-stats-number">
-                                <span data-purecounter-start="0" data-purecounter-end="90" data-purecounter-duration="2"
-                                    class="purecounter">90</span>+
+                                <span data-purecounter-start="0" data-purecounter-end="110" data-purecounter-duration="2"
+                                    class="purecounter">110</span>+
                             </span>
                             <p class="contrib-stats-label">Student Awards</p>
                         </div>
@@ -2162,8 +1974,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="col-lg-3 col-md-6">
                         <div class="contrib-stats-item">
                             <span class="contrib-stats-number">
-                                <span data-purecounter-start="0" data-purecounter-end="59" data-purecounter-duration="2"
-                                    class="purecounter">59</span>+
+                                <span data-purecounter-start="0" data-purecounter-end="65" data-purecounter-duration="2"
+                                    class="purecounter">65</span>+
                             </span>
                             <p class="contrib-stats-label">Faculty Chairs</p>
                         </div>
@@ -2171,8 +1983,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="col-lg-3 col-md-6">
                         <div class="contrib-stats-item">
                             <span class="contrib-stats-number">
-                                <span data-purecounter-start="0" data-purecounter-end="22" data-purecounter-duration="2"
-                                    class="purecounter">22</span>+
+                                <span data-purecounter-start="0" data-purecounter-end="40" data-purecounter-duration="2"
+                                    class="purecounter">40</span>+
                             </span>
                             <p class="contrib-stats-label">Faculty Fellowships</p>
                         </div>
@@ -2271,377 +2083,105 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </style>
         </section>
 
-        <!-- Stories Section - COMPLETELY FIXED MOBILE VIEW -->
-        <section id="stories" class="testimonials section" style="padding: 60px 0;">
+        <!-- Stories Section -->
+        <section id="stories" class="ag-stories">
             <div class="container">
-                <div class="section-header text-center mb-5">
-                    <span class="gtu-eyebrow">Student stories</span>
-                    <h2 class="ag-h">Stories of Possibility</h2>
-                </div>
-
-                <!-- Desktop Grid View -->
-                <div class="row g-4 d-none d-md-flex">
-                    <!-- Story 1 -->
-                    <div class="col-md-4">
-                        <div class="story-card h-100">
-                            <div class="story-image">
-                                <img src="Anshika (1).jpg" alt="Anshika - IIT Kanpur Student" class="img-fluid" style="object-position:center 58%">
-                            </div>
-                            <div class="story-content p-4">
-                                <h3 class="story-title">A Timely Gift, A Stronger Future</h3>
-                                <p class="story-text">Coming from a small farming family in rural Uttar Pradesh, Anshika knew early what financial uncertainty felt like. While a tuition fee waiver helped her enter IIT Kanpur, daily expenses like mess bills, electricity charges, and a failing laptop became overwhelming. At a critical moment, alumni support arrived. Pending dues were cleared, her laptop was repaired, and for the first time in months, Anshika could focus fully on her academics and placement preparation. This timely support restored not just stability, but confidence. Inspired by alumni generosity, she now dreams of giving back just as she was supported.</p>
-                                
-                                <div class="story-stats row mt-3">
-                                    <div class="col-12 text-center">
-                                        <div class="stat-value">Anshika Singh</div>
-                                        <div class="stat-label">B.Tech, IITK Student</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="ag-stories__head" data-aos="fade-up">
+                    <div class="ag-stories__intro">
+                        <h2 class="ag-h">Stories of Possibility</h2>
+                        <p class="ag-stories__lead">Real people. Lasting change. Explore how our community is creating impact across education, health and society.</p>
                     </div>
-                    
-                    <!-- Story 2 -->
-                    <div class="col-md-4">
-                        <div class="story-card h-100">
-                            <div class="story-image">
-                                <img src="Aerial Robotics Win.jpeg" alt="Team Aerial Robotics" class="img-fluid" style="object-position:center 45%">
-                            </div>
-                            <div class="story-content p-4">
-                                <h3 class="story-title">From Campus to Global Champions</h3>
-                                <p class="story-text">When Team Aerial Robotics qualified for the global finals at ICUAS 2025 in the United States, travel costs stood between them and the world stage. Alumni stepped in. With support from the IITK Alumni Association (Outer Delhi Chapter), the team represented IIT Kanpur internationally and returned as global winners. Competing against top teams from across continents, their first-place finish showcased what becomes possible when alumni invest in student ambition. This victory is a powerful reminder: alumni support doesn't just fund travel, it fuels global excellence and institutional pride.</p>
-                                
-                                <div class="story-stats row mt-3">
-                                    <div class="col-12 text-center">
-                                        <div class="stat-value text-center">Team Aerial Robotics</div>
-                                        <div class="stat-label text-center">Winners ICUAS 2025</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Story 3 -->
-                    <div class="col-md-4">
-                        <div class="story-card h-100">
-                            <div class="story-image">
-                                <img src="Mr.Gaurav Swarnkar.jpg" alt="Gaurav Swarnkar - Para-Athlete" class="img-fluid" style="object-position:center 33%">
-                            </div>
-                            <div class="story-content p-4">
-                                <h3 class="story-title">Empowering Ability Through Giving</h3>
-                                <p class="story-text">Gaurav Swarnkar's journey in para-athletics is defined by determination and strengthened by support. With financial assistance from the Cell for Differently Abled Persons (CDAP), Gaurav accessed training and competition opportunities that transformed effort into achievement. His medals at state and national para-athletics championships stand as proof of what targeted support can unlock. Alumni and institutional backing helped convert talent into podium finishes, reinforcing a powerful truth: when barriers are removed, potential rises. Gaurav's success reflects the lasting impact of inclusive and purpose-driven giving.</p>
-                                
-                                <div class="story-stats row mt-3">
-                                    <div class="col-12 text-center">
-                                        <div class="stat-value">Gaurav Swarnkar</div>
-                                        <div class="stat-label">Winner Para Athletics 2025</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mobile Carousel View -->
-                <div class="d-md-none">
-                    <div id="storiesCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <!-- Story 1 -->
-                            <div class="carousel-item active">
-                                <div class="story-card">
-                                    <div class="story-image">
-                                        <img src="Anshika (1).jpg" alt="Anshika - IIT Kanpur Student" class="img-fluid" style="object-position:center 58%">
-                                    </div>
-                                    <div class="story-content p-4">
-                                        <h3 class="story-title">A Timely Gift, A Stronger Future</h3>
-                                        <p class="story-text">Coming from a small farming family in rural Uttar Pradesh, Anshika knew early what financial uncertainty felt like. While a tuition fee waiver helped her enter IIT Kanpur, daily expenses like mess bills, electricity charges, and a failing laptop became overwhelming. At a critical moment, alumni support arrived. Pending dues were cleared, her laptop was repaired, and for the first time in months, Anshika could focus fully on her academics and placement preparation. This timely support restored not just stability, but confidence. Inspired by alumni generosity, she now dreams of giving back just as she was supported.</p>
-                                        
-                                        <div class="story-stats row mt-3">
-                                            <div class="col-12 text-center">
-                                                <div class="stat-value">Anshika Singh</div>
-                                                <div class="stat-label">B.Tech, IITK Student</div>
-                                            </div>
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Story 2 -->
-                            <div class="carousel-item">
-                                <div class="story-card">
-                                    <div class="story-image">
-                                        <img src="Aerial Robotics Win.jpeg" alt="Team Aerial Robotics" class="img-fluid" style="object-position:center 45%">
-                                    </div>
-                                    <div class="story-content p-4">
-                                        <h3 class="story-title">From Campus to Global Champions</h3>
-                                        <p class="story-text">When Team Aerial Robotics qualified for the global finals at ICUAS 2025 in the United States, travel costs stood between them and the world stage. Alumni stepped in. With support from the IITK Alumni Association (Outer Delhi Chapter), the team represented IIT Kanpur internationally and returned as global winners. Competing against top teams from across continents, their first-place finish showcased what becomes possible when alumni invest in student ambition. This victory is a powerful reminder: alumni support doesn't just fund travel, it fuels global excellence and institutional pride.</p>
-                                        
-                                        <div class="story-stats row mt-3">
-                                            <div class="col-12 text-center">
-                                                <div class="stat-value text-center">Team Aerial Robotics</div>
-                                                <div class="stat-label text-center">Winners ICUAS 2025</div>
-                                            </div>
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Story 3 -->
-                            <div class="carousel-item">
-                                <div class="story-card">
-                                    <div class="story-image">
-                                        <img src="Mr.Gaurav Swarnkar.jpg" alt="Gaurav Swarnkar - Para-Athlete" class="img-fluid" style="object-position:center 33%">
-                                    </div>
-                                    <div class="story-content p-4">
-                                        <h3 class="story-title">Empowering Ability Through Giving</h3>
-                                        <p class="story-text">Gaurav Swarnkar's journey in para-athletics is defined by determination and strengthened by support. With financial assistance from the Cell for Differently Abled Persons (CDAP), Gaurav accessed training and competition opportunities that transformed effort into achievement. His medals at state and national para-athletics championships stand as proof of what targeted support can unlock. Alumni and institutional backing helped convert talent into podium finishes, reinforcing a powerful truth: when barriers are removed, potential rises. Gaurav's success reflects the lasting impact of inclusive and purpose-driven giving.</p>
-                                        
-                                        <div class="story-stats row mt-3">
-                                            <div class="col-12 text-center">
-                                                <div class="stat-value">Gaurav Swarnkar</div>
-                                                <div class="stat-label">Winner Para Athletics 2025</div>
-                                            </div>
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Carousel Controls -->
-                        
-                        
-                        <!-- Carousel Indicators -->
-                        <div class="carousel-indicators mt-3">
-                            <button type="button" data-bs-target="#storiesCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
-                            <button type="button" data-bs-target="#storiesCarousel" data-bs-slide-to="1"></button>
-                            <button type="button" data-bs-target="#storiesCarousel" data-bs-slide-to="2"></button>
-                        </div>
+                    <div class="ag-stories__nav">
+                        <button type="button" class="ag-stories__btn ag-stories__btn--prev" aria-label="Previous story"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+                        <button type="button" class="ag-stories__btn ag-stories__btn--next" aria-label="Next story"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
                     </div>
                 </div>
             </div>
-            
-            <style>
-                /* Stories Section Styles */
-                .story-card {
-                    background: white;
-                    border-radius: 15px;
-                    overflow: hidden;
-                    box-shadow: 0 10px 30px rgba(176, 75, 52, 0.1);
-                    border: 1px solid rgba(176, 75, 52, 0.1);
-                    height: 100%;
-                    transition: transform 0.3s ease, box-shadow 0.3s ease;
-                }
-                
-                .story-card:hover {
-                    transform: translateY(-5px);
-                    box-shadow: 0 15px 40px rgba(176, 75, 52, 0.15);
-                }
-                
-                .story-image {
-                    height: 250px;
-                    overflow: hidden;
-                }
-                
-                .story-image img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    transition: transform 0.5s ease;
-                }
-                
-                .story-card:hover .story-image img {
-                    transform: scale(1.05);
-                }
-                
-                .story-content {
-                    padding: 25px;
-                }
-                
-                .story-title {
-                    color: #2d3748;
-                    font-size: 1.4rem;
-                    font-weight: 700;
-                    margin-bottom: 15px;
-                    line-height: 1.3;
-                }
-                
-                .story-text {
-                    color: #5a6268;
-                    line-height: 1.6;
-                    margin-bottom: 20px;
-                }
-                
-                .story-stats {
-                    border-top: 1px solid #f0e9e6;
-                    padding-top: 15px;
-                }
-                
-                .stat-value {
-                    color: #B04B34;
-                    font-weight: 700;
-                    font-size: 1.1rem;
-                    margin-bottom: 5px;
-                }
-                
-                .stat-label {
-                    color: #8a7f7a;
-                    font-size: 0.85rem;
-                    font-weight: 500;
-                }
-                
-                /* Carousel Styles for Mobile */
-                #storiesCarousel {
-                    position: relative;
-                }
-                
-                #storiesCarousel .carousel-indicators {
-                    position: static;
-                    margin-top: 20px;
-                }
-                
-                #storiesCarousel .carousel-indicators button {
-                    width: 10px;
-                    height: 10px;
-                    border-radius: 50%;
-                    background-color: #ccc;
-                    margin: 0 5px;
-                    border: none;
-                }
-                
-                #storiesCarousel .carousel-indicators button.active {
-                    background-color: #B04B34;
-                }
-                
-                #storiesCarousel .carousel-control-prev,
-                #storiesCarousel .carousel-control-next {
-                    width: 40px;
-                    height: 40px;
-                    background-color: #B04B34;
-                    border-radius: 50%;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    opacity: 0.8;
-                }
-                
-                #storiesCarousel .carousel-control-prev {
-                    left: 10px;
-                }
-                
-                #storiesCarousel .carousel-control-next {
-                    right: 10px;
-                }
-                
-                #storiesCarousel .carousel-control-prev:hover,
-                #storiesCarousel .carousel-control-next:hover {
-                    opacity: 1;
-                }
-                
-                /* Responsive Adjustments */
-                @media (max-width: 768px) {
-                    .story-image {
-                        height: 200px;
-                    }
-                    
-                    .story-content {
-                        padding: 20px;
-                    }
-                    
-                    .story-title {
-                        font-size: 1.3rem;
-                    }
-                    
-                    .story-text {
-                        font-size: 0.95rem;
-                        line-height: 1.5;
-                    }
-                    
-                    .stat-value {
-                        font-size: 1rem;
-                    }
-                    
-                    .stat-label {
-                        font-size: 0.8rem;
-                    }
-                    
-                    .section-header h1 {
-                        font-size: 2rem;
-                    }
-                }
-                
-                @media (max-width: 576px) {
-                    .story-image {
-                        height: 180px;
-                    }
-                    
-                    .story-title {
-                        font-size: 1.2rem;
-                    }
-                    
-                    .story-text {
-                        font-size: 0.9rem;
-                    }
-                    
-                    #storiesCarousel .carousel-control-prev,
-                    #storiesCarousel .carousel-control-next {
-                        width: 35px;
-                        height: 35px;
-                    }
-                    
-                    #storiesCarousel .carousel-control-prev-icon,
-                    #storiesCarousel .carousel-control-next-icon {
-                        width: 15px;
-                        height: 15px;
-                    }
-                }
-                
-                @media (max-width: 400px) {
-                    .story-image {
-                        height: 160px;
-                    }
-                    
-                    .story-content {
-                        padding: 15px;
-                    }
-                    
-                    .story-title {
-                        font-size: 1.1rem;
-                    }
-                    
-                    .story-text {
-                        font-size: 0.85rem;
-                    }
-                    
-                    .story-stats {
-                        padding-top: 10px;
-                    }
-                    
-                    .stat-value {
-                        font-size: 0.9rem;
-                    }
-                    
-                    .stat-label {
-                        font-size: 0.75rem;
-                    }
-                }
-            </style>
-            
-            <script>
-                // Initialize carousel for mobile
-                document.addEventListener('DOMContentLoaded', function() {
-                    const storiesCarousel = document.getElementById('storiesCarousel');
-                    if (storiesCarousel) {
-                        // Bootstrap carousel is already initialized via data-bs-ride attribute
-                        // Add smooth scrolling for carousel items
-                        const carousel = new bootstrap.Carousel(storiesCarousel, {
-                            interval: 5000,
-                            wrap: true
-                        });
-                    }
-                });
-            </script>
+
+            <div class="ag-stories__rail" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper ag-stories__swiper">
+                    <div class="swiper-wrapper">
+
+                        <!-- Story 1 -->
+                        <div class="swiper-slide">
+                            <article class="story-card">
+                                <div class="story-image">
+                                    <img src="Anshika (1).jpg" alt="Anshika Singh, IIT Kanpur student" style="object-position:center 58%" loading="lazy">
+                                    <span class="story-tag"><span class="story-tag__ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>Student support</span>
+                                </div>
+                                <div class="story-content">
+                                    <h3 class="story-title">A Timely Gift, A Stronger Future</h3>
+                                    <p class="story-text">Coming from a small farming family in rural Uttar Pradesh, Anshika knew early what financial uncertainty felt like. While a tuition fee waiver helped her enter IIT Kanpur, daily expenses like mess bills, electricity charges, and a failing laptop became overwhelming. At a critical moment, alumni support arrived. Pending dues were cleared, her laptop was repaired, and for the first time in months, Anshika could focus fully on her academics and placement preparation. This timely support restored not just stability, but confidence. Inspired by alumni generosity, she now dreams of giving back just as she was supported.</p>
+                                    <div class="story-stats">
+                                        <span class="story-stats__ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
+                                        <div class="story-stats__txt"><div class="stat-value">Anshika Singh</div>
+                                        <div class="stat-label">B.Tech, IITK Student</div></div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Story 2 -->
+                        <div class="swiper-slide">
+                            <article class="story-card">
+                                <div class="story-image">
+                                    <img src="Aerial Robotics Win.jpeg" alt="Team Aerial Robotics, IIT Kanpur" style="object-position:center 45%" loading="lazy">
+                                    <span class="story-tag"><span class="story-tag__ic"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/></svg></span>Global excellence</span>
+                                </div>
+                                <div class="story-content">
+                                    <h3 class="story-title">From Campus to Global Champions</h3>
+                                    <p class="story-text">When Team Aerial Robotics qualified for the global finals at ICUAS 2025 in the United States, travel costs stood between them and the world stage. Alumni stepped in. With support from the IITK Alumni Association (Outer Delhi Chapter), the team represented IIT Kanpur internationally and returned as global winners. Competing against top teams from across continents, their first-place finish showcased what becomes possible when alumni invest in student ambition. This victory is a powerful reminder: alumni support doesn't just fund travel, it fuels global excellence and institutional pride.</p>
+                                    <div class="story-stats">
+                                        <span class="story-stats__ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-3.5 3-6 7-6s7 2.5 7 6"/><path d="M15.5 14.5c3 0 6 2 6 5"/></svg></span>
+                                        <div class="story-stats__txt"><div class="stat-value">Team Aerial Robotics</div>
+                                        <div class="stat-label">Winners, ICUAS 2025</div></div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Story 3 -->
+                        <div class="swiper-slide">
+                            <article class="story-card">
+                                <div class="story-image">
+                                                                        <img src="project-vision.jpg" alt="Project Vision – vision screening for schoolchildren" style="object-position:center 45%" loading="lazy" onerror="this.closest('.story-image').classList.add('is-placeholder');this.remove()">
+                                    <span class="story-placeholder" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+                                    <span class="story-tag"><span class="story-tag__ic"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>Community health</span>
+                                </div>
+                                <div class="story-content">
+                                    <h3 class="story-title">A Clearer Vision for Brighter Futures</h3>
+                                    <p class="story-text">For many schoolchildren, unclear vision can become an invisible barrier to learning. Through Project Vision, a DoRA-supported initiative led by CDAP and enabled by alumni contributions, children at Kendriya Vidyalayas received access to vision screening and medical support. Across two phases, 150+ children were screened, helping identify vision impairments early. Children who needed spectacles received them, making it easier to read, write and participate in class. One student shared how getting spectacles helped them see the blackboard clearly and study comfortably. A simple intervention made a meaningful difference to everyday learning.</p>
+                                    <div class="story-stats">
+                                        <span class="story-stats__ic"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+                                        <div class="story-stats__txt"><div class="stat-value">Project Vision</div></div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <!-- Story 4 -->
+                        <div class="swiper-slide">
+                            <article class="story-card">
+                                <div class="story-image">
+                                                                        <img src="doms-golden-jubilee.jpg" alt="Department of Management Sciences Golden Jubilee" style="object-position:center 62%" loading="lazy" onerror="this.closest('.story-image').classList.add('is-placeholder');this.remove()">
+                                    <span class="story-placeholder" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-5 8 5v12"/><path d="M9 21v-6h6v6"/><path d="M2 21h20"/></svg></span>
+                                    <span class="story-tag"><span class="story-tag__ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11.5V16c0 1.5 2.5 3 5 3s5-1.5 5-3v-4.5"/><path d="M21 9v6"/></svg></span>Academic engagement</span>
+                                </div>
+                                <div class="story-content">
+                                    <h3 class="story-title">Celebrating 50 Years Through Academic Impact</h3>
+                                    <p class="story-text">During its Golden Jubilee year, the Department of Management Sciences (DoMS), with support channelled through the DoRA Office, turned a milestone celebration into sustained academic engagement. Alumni contributions enabled 70 academic engagements, including 38 talks and seminars, 7 workshops and 25 webinars through the VIBGYOR and Kaleidoscope series. These engagements strengthened industry-academia collaboration, expanded national and international partnerships, and enriched learning opportunities for students and faculty. As Prof. B. V. Phani, Head of DoMS, noted, alumni engagement rekindled a strong sense of camaraderie between the department and its alumni, inspiring continued participation in its growth.</p>
+                                    <div class="story-stats">
+                                        <span class="story-stats__ic"><svg viewBox="0 0 24 24"><path d="M3 10l9-6 9 6"/><path d="M5 10v9M9 10v9M15 10v9M19 10v9"/><path d="M3 19h18"/></svg></span>
+                                        <div class="story-stats__txt"><div class="stat-value">Department of Management Sciences</div></div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                    </div>
+                    <div class="ag-stories__pagination"></div>
+                </div>
+            </div>
         </section>
 
         <!-- Rewards Section -->
@@ -2669,290 +2209,171 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <div class="ag-rewards__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.3 7 22l5-3 5 3-1.2-8.7"/></svg></div>
                         <h3>Legacy &amp; <span>Recognition</span></h3>
                     </div>
+                    <div class="ag-rewards__item ag-rewards__item--match" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="ag-rewards__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9-.8-.8-2.1-.8-2.9-.1z"/><path d="M12 15l-3-3 2.5-5.5c1.6-3.2 5-5.3 8.5-5.5 0 3.5-1.8 7-5 8.6L12 15z"/><path d="M9 12H5l2-4h3"/><path d="M12 15v4l4-2v-3"/><circle cx="15" cy="8.5" r="1.2"/></svg></div>
+                        <h3>2x Your Impact <span>with Donation Matching</span></h3>
+                    </div>
                 </div>
             </div>
         </section>
 
-       <!-- Testimonials Section -->
-       <section id="voices" class="voicestest">
-        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-            <div class="ag-voices__head"><span class="gtu-eyebrow">Alumni voices</span><h2 class="ag-h">Voices of Generosity</h2></div>
-            <div class="carousel-inner container">
+        <!-- Voices Section -->
+        <section id="voices" class="ag-voices">
+            <div class="container">
+                <div class="ag-voices__head" data-aos="fade-up"><span class="gtu-eyebrow">Alumni voices</span><h2 class="ag-h">Voices of Generosity</h2></div>
+                <div id="testimonialCarousel" class="carousel slide ag-voices__carousel" data-bs-ride="carousel" data-bs-interval="7000" data-aos="fade-up" data-aos-delay="100">
+                    <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <div class="testimonial">
-                        <img src="testimonials/Abhay_Bhushan.png" alt="Abhay Bhushan" width="260" height="320" loading="eager" decoding="async">
-                        <div class="testimonial-text">
-                            <div class="testimonial-name">Mr. Abhay K. Bhushan</div>
-                            <div class="testimonial-title">B.Tech/EE/1965<br />Chairman, Asquare, Inc.</div>
-                            <div class="quote-icon"><svg class="ag-quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 6C4.9 6 3 7.9 3 10.3c0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5C8 17.6 9.6 15 9.6 11.8V10c0-2.2-1.1-4-2.4-4zm9.6 0c-2.3 0-4.2 1.9-4.2 4.3 0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5c3.1-1.4 4.7-4 4.7-7.2V10c0-2.2-1.1-4-2.4-4z"/></svg></div>
-                            <p>Being from the first batch of IIT Kanpur, filled me with hope and a can-do spirit
-                                which helped me in developing the Internet and I am grateful to IIT Kanpur for this
-                                and I want to continue giving back, both individually and collectively. I encourage
-                                all alumni to give back. TOGETHER WE CAN!</p>
-                            <div class="quote-icon text-end"><svg class="ag-quote ag-quote--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 6C4.9 6 3 7.9 3 10.3c0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5C8 17.6 9.6 15 9.6 11.8V10c0-2.2-1.1-4-2.4-4zm9.6 0c-2.3 0-4.2 1.9-4.2 4.3 0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5c3.1-1.4 4.7-4 4.7-7.2V10c0-2.2-1.1-4-2.4-4z"/></svg></div>
+                    <div class="ag-voice">
+                        <div class="ag-voice__media">
+                            <img src="testimonials/Abhay_Bhushan.png" alt="Mr. Abhay K. Bhushan" loading="eager" decoding="async">
+                            <div class="ag-voice__id">
+                                <span class="ag-voice__seal"><img src="testimonials/IITKLogo.png" alt=""></span>
+                                <span class="ag-voice__who"><span class="ag-voice__name">Mr. Abhay K. Bhushan</span><span class="ag-voice__title">B.Tech/EE/1965 &middot; Chairman, Asquare, Inc.</span></span>
+                            </div>
                         </div>
-                    </div>
-                </div>
-               
-                <div class="carousel-item">
-                    <div class="testimonial">
-                        <img src="testimonials/Dhanraj K Chokappa.jpg" alt="Mr. Dhanraj K. Chokappa" width="260" height="320" loading="eager" decoding="async">
-                        <div class="testimonial-text">
-                            <div class="testimonial-name">Mr. Dhanraj K. Chokappa</div>
-                            <div class="testimonial-title">(BT/CHE/1982),<br /> Independent Consultant. Retired from Unilever R&amp;D Bangalore</div>
-                            <div class="quote-icon"><svg class="ag-quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 6C4.9 6 3 7.9 3 10.3c0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5C8 17.6 9.6 15 9.6 11.8V10c0-2.2-1.1-4-2.4-4zm9.6 0c-2.3 0-4.2 1.9-4.2 4.3 0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5c3.1-1.4 4.7-4 4.7-7.2V10c0-2.2-1.1-4-2.4-4z"/></svg></div>
-                            <p>My five years as a BTech student from 1977 to 1982 provided a strong foundation for
-                                my subsequent achievements. One enduring memory is of my roommate during the
-                                first three years, who, despite coming from a humble rural background, cleared the
-                                JEE through his own efforts. Fortunately, tuition and hostel fees were very nominal at
-                                that time. With a merit cum means scholarship, he graduated with good grades and
-                                is now well-settled abroad. Today, tuition fees and other expenses are beyond the
-                                reach of many deserving students. Helping such students is my primary motivation to
-                                give back to IITK.</p>
-                            <div class="quote-icon text-end"><svg class="ag-quote ag-quote--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 6C4.9 6 3 7.9 3 10.3c0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5C8 17.6 9.6 15 9.6 11.8V10c0-2.2-1.1-4-2.4-4zm9.6 0c-2.3 0-4.2 1.9-4.2 4.3 0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5c3.1-1.4 4.7-4 4.7-7.2V10c0-2.2-1.1-4-2.4-4z"/></svg></div>
+                        <div class="ag-voice__panel">
+                            <svg class="ag-voice__quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 6C4.9 6 3 7.9 3 10.3c0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5C8 17.6 9.6 15 9.6 11.8V10c0-2.2-1.1-4-2.4-4zm9.6 0c-2.3 0-4.2 1.9-4.2 4.3 0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5c3.1-1.4 4.7-4 4.7-7.2V10c0-2.2-1.1-4-2.4-4z"/></svg>
+                            <p>Being from the first batch of IIT Kanpur, filled me with hope and a can-do spirit which helped me in developing the Internet and I am grateful to IIT Kanpur for this and I want to continue giving back, both individually and collectively. I encourage all alumni to give back. TOGETHER WE CAN!</p>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <div class="testimonial">
-                        <img src="testimonials/Jayshree_Chakraborty.jpg" alt="Dr. Jayshree Chakraborty" width="260" height="320" loading="eager" decoding="async">
-                        <div class="testimonial-text">
-                            <div class="testimonial-name">Dr. Jayshree Chakraborty</div>
-                            <div class="testimonial-title">Ph.D/HSS/1987</div>
-                            <div class="quote-icon"><svg class="ag-quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 6C4.9 6 3 7.9 3 10.3c0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5C8 17.6 9.6 15 9.6 11.8V10c0-2.2-1.1-4-2.4-4zm9.6 0c-2.3 0-4.2 1.9-4.2 4.3 0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5c3.1-1.4 4.7-4 4.7-7.2V10c0-2.2-1.1-4-2.4-4z"/></svg></div>
+                    <div class="ag-voice">
+                        <div class="ag-voice__media">
+                            <img src="testimonials/Dhanraj K Chokappa.jpg" alt="Mr. Dhanraj K. Chokappa" loading="eager" decoding="async">
+                            <div class="ag-voice__id">
+                                <span class="ag-voice__seal"><img src="testimonials/IITKLogo.png" alt=""></span>
+                                <span class="ag-voice__who"><span class="ag-voice__name">Mr. Dhanraj K. Chokappa</span><span class="ag-voice__title">BT/CHE/1982 &middot; Independent Consultant, retired from Unilever R&amp;D Bangalore</span></span>
+                            </div>
+                        </div>
+                        <div class="ag-voice__panel">
+                            <svg class="ag-voice__quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 6C4.9 6 3 7.9 3 10.3c0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5C8 17.6 9.6 15 9.6 11.8V10c0-2.2-1.1-4-2.4-4zm9.6 0c-2.3 0-4.2 1.9-4.2 4.3 0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5c3.1-1.4 4.7-4 4.7-7.2V10c0-2.2-1.1-4-2.4-4z"/></svg>
+                            <p>My five years as a BTech student from 1977 to 1982 provided a strong foundation for my subsequent achievements. One enduring memory is of my roommate during the first three years, who, despite coming from a humble rural background, cleared the JEE through his own efforts. Fortunately, tuition and hostel fees were very nominal at that time. With a merit cum means scholarship, he graduated with good grades and is now well-settled abroad. Today, tuition fees and other expenses are beyond the reach of many deserving students. Helping such students is my primary motivation to give back to IITK.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="ag-voice">
+                        <div class="ag-voice__media">
+                            <img src="testimonials/Jayshree_Chakraborty.jpg" alt="Dr. Jayshree Chakraborty" loading="eager" decoding="async">
+                            <div class="ag-voice__id">
+                                <span class="ag-voice__seal"><img src="testimonials/IITKLogo.png" alt=""></span>
+                                <span class="ag-voice__who"><span class="ag-voice__name">Dr. Jayshree Chakraborty</span><span class="ag-voice__title">Ph.D/HSS/1987</span></span>
+                            </div>
+                        </div>
+                        <div class="ag-voice__panel">
+                            <svg class="ag-voice__quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 6C4.9 6 3 7.9 3 10.3c0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5C8 17.6 9.6 15 9.6 11.8V10c0-2.2-1.1-4-2.4-4zm9.6 0c-2.3 0-4.2 1.9-4.2 4.3 0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5c3.1-1.4 4.7-4 4.7-7.2V10c0-2.2-1.1-4-2.4-4z"/></svg>
                             <p>I feel fortunate being part of a group to support young, bright, energetic minds who aim at accomplishing with harmony and peace to build a bright, powerful and strong nation. May our nation, alma mater and family always be the source of inspiration in life.</p>
-                            <div class="quote-icon text-end"><svg class="ag-quote ag-quote--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 6C4.9 6 3 7.9 3 10.3c0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5C8 17.6 9.6 15 9.6 11.8V10c0-2.2-1.1-4-2.4-4zm9.6 0c-2.3 0-4.2 1.9-4.2 4.3 0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5c3.1-1.4 4.7-4 4.7-7.2V10c0-2.2-1.1-4-2.4-4z"/></svg></div>
                         </div>
                     </div>
                 </div>
-
                 <div class="carousel-item">
-                    <div class="testimonial">
-                        <img src="testimonials/V_Hariharasubramanian.jpg" alt="V. Hariharasubramanian" width="260" height="320" loading="eager" decoding="async">
-                        <div class="testimonial-text">
-                            <div class="testimonial-name">V. Hariharasubramanian</div>
-                            <div class="testimonial-title">Ph.D/CHM/1977</div>
-                            <div class="quote-icon"><svg class="ag-quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 6C4.9 6 3 7.9 3 10.3c0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5C8 17.6 9.6 15 9.6 11.8V10c0-2.2-1.1-4-2.4-4zm9.6 0c-2.3 0-4.2 1.9-4.2 4.3 0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5c3.1-1.4 4.7-4 4.7-7.2V10c0-2.2-1.1-4-2.4-4z"/></svg></div>
+                    <div class="ag-voice">
+                        <div class="ag-voice__media">
+                            <img src="testimonials/V_Hariharasubramanian.jpg" alt="V. Hariharasubramanian" loading="eager" decoding="async">
+                            <div class="ag-voice__id">
+                                <span class="ag-voice__seal"><img src="testimonials/IITKLogo.png" alt=""></span>
+                                <span class="ag-voice__who"><span class="ag-voice__name">V. Hariharasubramanian</span><span class="ag-voice__title">Ph.D/CHM/1977</span></span>
+                            </div>
+                        </div>
+                        <div class="ag-voice__panel">
+                            <svg class="ag-voice__quote" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 6C4.9 6 3 7.9 3 10.3c0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5C8 17.6 9.6 15 9.6 11.8V10c0-2.2-1.1-4-2.4-4zm9.6 0c-2.3 0-4.2 1.9-4.2 4.3 0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5c3.1-1.4 4.7-4 4.7-7.2V10c0-2.2-1.1-4-2.4-4z"/></svg>
                             <p>In 1969 I had to take a bank loan for my living expenses to complete my M.Sc in IITK. So, helping deserving students is very dear to my heart. My wish is that no deserving student should ever reject IITK for financial reasons. If other alumni who have made it in USA can join me, my wish can be fulfilled.</p>
-                            <div class="quote-icon text-end"><svg class="ag-quote ag-quote--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 6C4.9 6 3 7.9 3 10.3c0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5C8 17.6 9.6 15 9.6 11.8V10c0-2.2-1.1-4-2.4-4zm9.6 0c-2.3 0-4.2 1.9-4.2 4.3 0 2.1 1.5 3.8 3.5 4.1-.4 1.3-1.3 2.4-2.6 3.1l1 1.5c3.1-1.4 4.7-4 4.7-7.2V10c0-2.2-1.1-4-2.4-4z"/></svg></div>
                         </div>
                     </div>
                 </div>
+                    </div>
+                    <div class="ag-voices__controls">
+                        <button class="ag-voices__btn" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" aria-label="Previous"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+                        <div class="carousel-indicators ag-voices__dots">
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Voice 1"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Voice 2"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Voice 3"></button>
+                            <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="3" aria-label="Voice 4"></button>
+                        </div>
+                        <button class="ag-voices__btn" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" aria-label="Next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+                    </div>
+                </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden=" true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-            <div class="carousel-indicators mt-4">
-                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active"
-                    aria-current="true"></button>
-                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2"></button>
-                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="3"></button>
+        </section>
+
+        <!-- Ways to Contribute -->
+        <section id="ways-to-give" class="ag-ways">
+            <div class="container">
+                <div class="ag-ways__head" data-aos="fade-up">
+                    <h2 class="ag-h">Ways to Contribute</h2>
+                    <p>Choose the route that works best for you. Every contribution to Annual Giving is acknowledged and receipted by the Office of the Dean of Resources &amp; Alumni.</p>
+                </div>
+
+                <div class="ag-ways__list" data-aos="fade-up" data-aos-delay="100">
+
+                    <div class="ag-way">
+                        <div class="ag-way__head">
+                            <div class="ag-way__intro">
+                                <h3>Bank or Wire Transfer</h3>
+                                <p>Transfer directly to the Endowment Fund Account, IIT Kanpur (SBI, IIT Kanpur Branch).</p>
+                            </div>
+                            <button type="button" class="ag-way__toggle" aria-expanded="false" aria-controls="way-bank"><span>View bank details</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+                        </div>
+                        <div class="ag-way__body" id="way-bank" hidden>
+                            <div class="ag-way__content">
+                                <p>Bank transfers can be made to <strong>Endowment Fund Account, IIT Kanpur</strong>, held with State Bank of India (SBI), IIT Kanpur Branch.</p>
+                                <dl class="ag-way__dl">
+                                    <div><dt>Account Number</dt><dd>10426004735</dd></div>
+                                    <div><dt>IFSC Code</dt><dd>SBIN0001161</dd></div>
+                                    <div><dt>SWIFT Code</dt><dd>SBININBB499</dd></div>
+                                </dl>
+                                <p>Please include your name and the purpose of your contribution in the transfer reference, wherever possible, to facilitate acknowledgment and issuance of a receipt.</p>
+                                <p>For donations from the United States, please refer to the <a href="testimonials/guidebook-donating-iitkfoundation.pdf" target="_blank" rel="noopener">U.S. Donation Guidebook</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ag-way">
+                        <div class="ag-way__head">
+                            <div class="ag-way__intro">
+                                <h3>Cheque or Demand Draft</h3>
+                                <p>Send your contribution by cheque or demand draft using the applicable payment instructions.</p>
+                            </div>
+                            <button type="button" class="ag-way__toggle" aria-expanded="false" aria-controls="way-cheque"><span>View instructions</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+                        </div>
+                        <div class="ag-way__body" id="way-cheque" hidden>
+                            <div class="ag-way__content">
+                                <p>Please make your cheque or demand draft payable to <strong>&ldquo;Endowment Fund Account, IIT Kanpur&rdquo;</strong> and courier it to:</p>
+                                <address class="ag-way__address">
+                                    Office of the Dean of Resources and Alumni<br>
+                                    3rd Floor, Faculty Building Annex<br>
+                                    Indian Institute of Technology Kanpur<br>
+                                    Kanpur &ndash; 208016, Uttar Pradesh, India<br>
+                                    Phone: <a href="tel:+915126797289">+91-512-6797289</a>
+                                </address>
+                                <p>Please send a scanned copy to <a href="mailto:dora_desk@iitk.ac.in">dora_desk@iitk.ac.in</a>, along with your name, contact details, and the area or fund you wish to support, to facilitate acknowledgment and receipt of your contribution.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ag-way">
+                        <div class="ag-way__head">
+                            <div class="ag-way__intro">
+                                <h3>Planned Giving</h3>
+                                <p>Create a lasting legacy through a bequest, estate provision or another structured future gift.</p>
+                            </div>
+                            <button type="button" class="ag-way__toggle" aria-expanded="false" aria-controls="way-planned"><span>Explore</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+                        </div>
+                        <div class="ag-way__body" id="way-planned" hidden>
+                            <div class="ag-way__content">
+                                <p>Planned Giving offers an opportunity to support IIT Kanpur beyond your lifetime through a provision in your will, a charitable trust, an insurance or retirement-plan beneficiary designation, or another long-term arrangement.</p>
+                                <!-- TODO: confirm the Planned Giving page URL -->
+                                <a class="gtu-btn gtu-btn--outline" href="https://iitk.ac.in/dora/" target="_blank" rel="noopener">Planned Giving <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </div>
-        <style>
-            .voicestest {
-                background-color: #fff;
-                padding: 60px 0;
-            }
+        </section>
 
-            .testimonial {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                gap: 40px;
-            }
-
-            .testimonial-text {
-                flex: 1;
-            }
-
-            .testimonial-text p {
-                font-size: 1rem;
-                color: #0f0f0f;
-                line-height: 1.7;
-            }
-
-            .quote-icon {
-                font-size: 40px;
-                color: #b04b344f;
-                line-height: 1;
-                display: block;
-            }
-
-            .open-quote {
-                font-size: 30px;
-                color: #b04b34cd;
-                display: inline-block;
-                line-height: 0.5;
-                margin-bottom: 10px;
-            }
-
-            .close-quote {
-                font-size: 30px;
-                color: #b04b34b9;
-                transform: rotate(180deg) translateY(5px);
-                display: inline-block;
-                line-height: 0.5;
-                margin-top: 10px;
-            }
-
-            .testimonial-name {
-                font-weight: 700;
-                font-size: 1.2rem;
-                margin-top: 20px;
-                border-bottom: 2px solid #B04B34;
-                display: inline-block;
-                padding-bottom: 2px;
-            }
-
-            .testimonial-title {
-                font-size: 0.95rem;
-                color: #555;
-                margin-top: 5px;
-            }
-
-            .testimonial img {
-                width: 250px;
-                height: auto;
-                border-radius: 10px;
-                object-fit: contain;
-            }
-
-            .carousel-indicators [data-bs-target] {
-                background-color: #B04B34;
-                width: 12px;
-                height: 12px;
-                border-radius: 50%;
-                margin: 0 5px;
-            }
-
-            .carousel-indicators {
-                bottom: -50px;
-            }
-
-            @media (max-width: 992px) {
-                .testimonial {
-                    gap: 30px;
-                }
-                
-                .testimonial img {
-                    width: 200px;
-                }
-                
-                .testimonial-text p {
-                    font-size: 0.95rem;
-                }
-            }
-
-            @media (max-width: 768px) {
-                .voicestest {
-                    padding: 40px 0 80px 0;
-                }
-
-                .testimonial {
-                    flex-direction: column;
-                    text-align: center;
-                    gap: 20px;
-                }
-
-                .testimonial img {
-                    width: 180px;
-                    height: 180px;
-                    margin: 0 auto;
-                    object-fit: contain;
-                }
-
-                .testimonial-text {
-                    padding: 0 10px;
-                    width: 100%;
-                }
-
-                .testimonial-text p {
-                    font-size: 0.95rem;
-                    line-height: 1.6;
-                    text-align: left;
-                }
-
-                .testimonial-name,
-                .testimonial-title {
-                    text-align: center;
-                    margin-bottom: 10px;
-                }
-
-                .quote-icon {
-                    font-size: 35px;
-                    margin-bottom: 50px;
-                }
-
-                .testimonial-text .open-quote {
-                    display: inline-block;
-                    text-align: justify;
-                    float: left;
-                    margin-right: 10px;
-                }
-
-                .open-quote,
-                .close-quote {
-                    font-size: 25px;
-                    display: inline-block;
-                }
-
-                .testimonial-text .quote-icon:first-child {
-                    text-align: left !important;
-                }
-            }
-
-            @media (max-width: 576px) {
-                .voicestest {
-                    padding: 30px 0 70px 0;
-                }
-
-                .testimonial img {
-                    width: 150px;
-                    height: 150px;
-                }
-
-                .testimonial-text p {
-                    font-size: 0.9rem;
-                }
-
-                .testimonial-name {
-                    font-size: 1.1rem;
-                }
-
-                .testimonial-title {
-                    font-size: 0.85rem;
-                }
-                
-                h2.fw-bold.display-6 {
-                    font-size: 1.8rem;
-                }
-            }
-
-            @media (max-width: 400px) {
-                .testimonial-text {
-                    padding: 0 5px;
-                }
-
-                .testimonial-text p {
-                    font-size: 0.85rem;
-                }
-                
-                .testimonial img {
-                    width: 130px;
-                    height: 130px;
-                }
-            }
-        </style>
-    </section>
         <section class="ag-closing" id="closing" data-aos="fade">
             <span class="gtu-eyebrow" style="color:#FCE2C5">Annual Giving &nbsp;|&nbsp; Greater Than Us</span>
             <h2 class="ag-h ag-h--light">The Next Chapter Belongs to All of Us.</h2>
@@ -3050,32 +2471,90 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
     <script src="assets/vendor/gsap/gsap.min.js"></script>
     <script src="assets/vendor/gsap/ScrollTrigger.min.js"></script>
     <script>
+    /* =========================================================
+       Annual Giving – page scripts (GSAP + AOS + Swiper)
+       ========================================================= */
     (function(){
-      if (!window.gsap || !window.ScrollTrigger) return;
-      gsap.registerPlugin(ScrollTrigger);
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduce) return;
-      /* parallax backgrounds */
-      if (window.matchMedia('(min-width: 992px)').matches) {
-        var sup = document.querySelector('.ag-support');
-        if (sup) gsap.fromTo(sup, { '--agpy': '-60px' }, { '--agpy': '60px', ease: 'none', scrollTrigger: { trigger: sup, start: 'top bottom', end: 'bottom top', scrub: true } });
+      var hasGsap = !!(window.gsap && window.ScrollTrigger);
+      if (hasGsap) gsap.registerPlugin(ScrollTrigger);
+
+      /* ---- hero parallax (desktop only) ---- */
+      if (hasGsap && !reduce && window.matchMedia('(min-width: 992px)').matches) {
         var heroMedia = document.querySelector('.ag-hero__media');
         if (heroMedia) gsap.to(heroMedia, { yPercent: 18, ease: 'none', scrollTrigger: { trigger: '#donation-form', start: 'top top', end: 'bottom top', scrub: true } });
+        var sup = document.querySelector('.ag-support');
+        if (sup) gsap.fromTo(sup, { '--agpy': '-60px' }, { '--agpy': '60px', ease: 'none', scrollTrigger: { trigger: sup, start: 'top bottom', end: 'bottom top', scrub: true } });
       }
-      /* pillars: rise + stagger when section enters */
-      var pillars = gsap.utils.toArray('.ag-pillar');
-      if (pillars.length) {
-        pillars.forEach(function(card){
-          var icon = card.querySelector('.ag-pillar__icon');
-          card.addEventListener('mouseenter', function(){ gsap.to(card, { y: -10, scale: 1.02, duration: .35, ease: 'power2.out' }); gsap.fromTo(icon, { rotate: -8, scale: .9 }, { rotate: 0, scale: 1.12, duration: .45, ease: 'back.out(2)' }); });
-          card.addEventListener('mouseleave', function(){ gsap.to(card, { y: 0, scale: 1, duration: .4, ease: 'power2.out' }); gsap.to(icon, { scale: 1, duration: .3 }); });
+
+      /* ---- hero text: letter-by-letter reveal + tagline highlight ---- */
+      (function(){
+        var annual = document.querySelector('.ag-hero__annual');
+        var giving = document.querySelector('.ag-hero__impact');
+        var tag    = document.querySelector('.ag-hero__tagtext');
+        if (!annual || !giving || !tag) return;
+        if (!hasGsap || reduce) return; /* no JS/reduced motion: static text stays as-is */
+
+        function splitLetters(el){
+          var txt = el.textContent; el.textContent = '';
+          el.setAttribute('aria-label', txt);
+          var frag = document.createDocumentFragment();
+          txt.split('').forEach(function(ch){
+            var w = document.createElement('span'); w.className = 'ag-ch';
+            var i = document.createElement('span'); i.className = 'ag-ch__i'; i.textContent = ch === ' ' ? '\u00A0' : ch;
+            w.appendChild(i); frag.appendChild(w);
+          });
+          el.appendChild(frag);
+          return el.querySelectorAll('.ag-ch__i');
+        }
+        function splitWords(el){
+          var out = [];
+          Array.prototype.slice.call(el.childNodes).forEach(function(node){
+            if (node.nodeType === 3) {
+              var frag = document.createDocumentFragment();
+              node.textContent.split(/(\s+)/).forEach(function(part){
+                if (!part) return;
+                if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+                var w = document.createElement('span'); w.className = 'ag-w'; w.textContent = part; frag.appendChild(w); out.push(w);
+              });
+              el.replaceChild(frag, node);
+            } else if (node.nodeType === 1) { out.push(node); }
+          });
+          return out;
+        }
+
+        document.documentElement.classList.add('ag-hero-anim');
+        var aL = splitLetters(annual), gL = splitLetters(giving), words = splitWords(tag).concat(splitWords(document.querySelector('.ag-hero__tag2')));
+        var hl = document.querySelector('.ag-hero__hl'), rule = document.querySelector('.ag-hero__rule');
+
+        var tl = gsap.timeline({ defaults: { ease: 'power4.out' }, delay: .15 });
+        tl.fromTo(aL, { yPercent: 110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .7, stagger: .045 })
+          .fromTo(gL, { yPercent: 115, rotateX: -40, opacity: 0 }, { yPercent: 0, rotateX: 0, opacity: 1, duration: 1, stagger: .06, ease: 'expo.out' }, '-=.35')
+          .fromTo(rule, { scaleX: 0 }, { scaleX: 1, duration: .6, ease: 'power2.inOut' }, '-=.5')
+          .fromTo(words, { y: 18, opacity: 0, filter: 'blur(6px)' }, { y: 0, opacity: 1, filter: 'blur(0px)', duration: .6, stagger: .09, ease: 'power3.out' }, '-=.3')
+          .fromTo(hl, { '--hlw': '0%' }, { '--hlw': '100%', duration: .7, ease: 'power2.inOut' }, '-=.15')
+          .fromTo('.ag-hero__form', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: .9, ease: 'power3.out' }, '-=1.4');
+
+        /* gentle idle shimmer across GIVING, every few seconds */
+        gsap.to(gL, { color: 'rgba(252,226,197,1)', duration: .35, stagger: { each: .05, repeat: 1, yoyo: true, repeatDelay: 4 }, repeat: -1, repeatDelay: 4, delay: 3, ease: 'sine.inOut' });
+      })();
+
+      /* ---- pillars: flip on hover (desktop) / tap (touch) + keyboard ---- */
+      var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+      document.querySelectorAll('.ag-pillar').forEach(function(card){
+        function setFlip(on){ card.classList.toggle('is-flipped', on); card.setAttribute('aria-pressed', on ? 'true' : 'false'); }
+        if (!canHover) {
+          card.addEventListener('click', function(){ setFlip(!card.classList.contains('is-flipped')); });
+        }
+        card.addEventListener('keydown', function(e){
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setFlip(!card.classList.contains('is-flipped')); }
+          if (e.key === 'Escape') setFlip(false);
         });
-      }
+      });
     })();
     </script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
@@ -3087,51 +2566,173 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <script src="assets/js/main.js"></script>
 
     <script>
-document.addEventListener('DOMContentLoaded', function () {
-    /* ---- Annual Giving progress: INR + USD (1 USD = ₹95) ---- */
-    var USD_RATE = 95;
-    var raisedEl = document.getElementById('uniquegoal-raised');
-    var goalEl   = document.getElementById('uniquegoal-goal');
-    var raised = Number(String(raisedEl.dataset.raised || '0').replace(/[^0-9.]/g, '')) || 0;
-    var goal   = Number(String(goalEl.dataset.goal || '0').replace(/[^0-9.]/g, '')) || 1;
+    /* =========================================================
+       Progress meter – INR + USD (1 USD = ₹95), GSAP count-up
+       Update the numbers in the HTML:
+         #uniquegoal-raised  data-raised="<amount in ₹>"
+         #ag-contrib-number  data-count="<number of contributors>"
+         #uniquegoal-goal    data-goal="<goal in ₹>"
+       ========================================================= */
+    document.addEventListener('DOMContentLoaded', function () {
+        var USD_RATE = 95;
+        var raisedEl = document.getElementById('uniquegoal-raised');
+        var goalEl   = document.getElementById('uniquegoal-goal');
+        var contribEl= document.getElementById('ag-contrib-number');
+        if (!raisedEl || !goalEl) return;
 
-    function inrShort(n){
-        if (n >= 1e7) return (n/1e7).toFixed(2) + ' Cr';
-        if (n >= 1e5) return (n/1e5).toFixed(2) + ' L';
-        return n.toLocaleString('en-IN', { maximumFractionDigits: 0 });
-    }
-    function usdShort(n){
-        if (n >= 1e6) return '$' + (n/1e6).toFixed(2) + 'M';
-        if (n >= 1e3) return '$' + Math.round(n/1e3).toLocaleString('en-US') + 'K';
-        return '$' + Math.round(n);
-    }
-    var toUsd = function(v){ return v / USD_RATE; };
+        var raised = Number(String(raisedEl.dataset.raised || '0').replace(/[^0-9.]/g, '')) || 0;
+        var goal   = Number(String(goalEl.dataset.goal || '0').replace(/[^0-9.]/g, '')) || 1;
+        var contrib= Number(String((contribEl && contribEl.dataset.count) || '0').replace(/[^0-9.]/g, '')) || 0;
 
-    goalEl.textContent = inrShort(goal);
-    document.getElementById('ag-goal-usd').textContent = usdShort(toUsd(goal));
+        function inrShort(n){
+            if (n >= 1e7) return (n/1e7).toFixed(2) + ' Cr';
+            if (n >= 1e5) return (n/1e5).toFixed(2) + ' L';
+            return Math.round(n).toLocaleString('en-IN');
+        }
+        function usdShort(n){
+            if (n >= 1e6) return '$' + (n/1e6).toFixed(2) + 'M';
+            if (n >= 1e3) return '$' + Math.round(n/1e3).toLocaleString('en-US') + 'K';
+            return '$' + Math.round(n);
+        }
+        var toUsd = function(v){ return v / USD_RATE; };
 
-    var pct = Math.min(Math.round(raised / goal * 100), 100);
-    var fill = document.getElementById('uniquegoal-fill');
-    var pctEl = document.getElementById('uniquegoal-percent');
-    var usdEl = document.getElementById('ag-raised-usd');
+        goalEl.textContent = inrShort(goal);
+        document.getElementById('ag-goal-usd').textContent = usdShort(toUsd(goal));
 
-    var start = null, DUR = 1400;
-    function frame(t){
-        if (!start) start = t;
-        var k = Math.min((t - start) / DUR, 1); k = 1 - Math.pow(1 - k, 3);
-        raisedEl.textContent = inrShort(raised * k);
-        usdEl.textContent = usdShort(toUsd(raised * k));
-        pctEl.textContent = Math.round(pct * k);
-        if (k < 1) requestAnimationFrame(frame);
-    }
-    function run(){ requestAnimationFrame(frame); fill.style.width = Math.max(pct, 6) + '%'; }
-    if ('IntersectionObserver' in window) {
-        var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { run(); io.disconnect(); } }); }, { threshold: .3 });
-        io.observe(document.getElementById('ag-progress'));
-    } else { run(); }
-});
-</script>
+        var pct     = Math.min(raised / goal * 100, 100);
+        var bar     = document.getElementById('uniquegoal-bar');
+        var fill    = document.getElementById('uniquegoal-fill');
+        var marker  = document.getElementById('uniquegoal-marker');
+        var pctEl   = document.getElementById('uniquegoal-percent');
+        var usdEl   = document.getElementById('ag-raised-usd');
+        var minVisible = 3; /* keep a sliver visible at 0% */
 
+        function paint(k){ /* k = 0..1 progress of the animation */
+            var p = pct * k;
+            raisedEl.textContent = inrShort(raised * k);
+            usdEl.textContent = usdShort(toUsd(raised * k));
+            pctEl.textContent = Math.round(p);
+            if (contribEl) contribEl.textContent = Math.round(contrib * k).toLocaleString('en-IN');
+            var w = Math.max(p, minVisible);
+            fill.style.width = w + '%';
+            marker.style.left = w + '%';
+        }
+        paint(0);
+        bar.setAttribute('aria-valuenow', Math.round(pct));
+
+        function run(){
+            if (window.gsap && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                var o = { k: 0 };
+                gsap.to(o, { k: 1, duration: 2.2, ease: 'power3.out', onUpdate: function(){ paint(o.k); } });
+                gsap.fromTo('.ag-bar__shine', { xPercent: -120 }, { xPercent: 220, duration: 1.6, ease: 'power2.inOut', delay: 1.2, repeat: 1, repeatDelay: 2 });
+            } else { paint(1); }
+        }
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { run(); io.disconnect(); } }); }, { threshold: .35 });
+            io.observe(document.getElementById('ag-progress'));
+        } else { run(); }
+    });
+    </script>
+
+    <script>
+    /* ---- Campaign film modal (plays inside the page) ---- */
+    (function(){
+      var modal = document.getElementById('agFilmModal');
+      var frame = document.getElementById('agFilmFrame');
+      var openBtn = document.getElementById('agFilmOpen');
+      if (!modal || !frame || !openBtn) return;
+      var VIDEO_ID = 'vtjF4dYxnJs';
+      var lastFocus = null;
+
+      function open(){
+        lastFocus = document.activeElement;
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + VIDEO_ID + '?autoplay=1&rel=0&modestbranding=1&playsinline=1&start=8';
+        iframe.title = 'Greater Than Us – The IIT Kanpur Campaign Film';
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+        iframe.setAttribute('frameborder', '0');
+        frame.innerHTML = '';
+        frame.appendChild(iframe);
+        modal.hidden = false;
+        document.body.classList.add('ag-modal-open');
+        requestAnimationFrame(function(){ modal.classList.add('is-open'); });
+        modal.querySelector('.ag-film-modal__close').focus();
+      }
+      function close(){
+        modal.classList.remove('is-open');
+        document.body.classList.remove('ag-modal-open');
+        setTimeout(function(){ modal.hidden = true; frame.innerHTML = ''; }, 260);
+        if (lastFocus) lastFocus.focus();
+      }
+      openBtn.addEventListener('click', open);
+      modal.querySelectorAll('[data-film-close]').forEach(function(el){ el.addEventListener('click', close); });
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !modal.hidden) close(); });
+    })();
+
+    /* ---- Ways to Contribute accordion ---- */
+    (function(){
+      document.querySelectorAll('.ag-way__toggle').forEach(function(btn){
+        var body = document.getElementById(btn.getAttribute('aria-controls'));
+        var way = btn.closest('.ag-way');
+        if (!body) return;
+        /* whole row is clickable; the button is the accessible control */
+        way.querySelector('.ag-way__head').addEventListener('click', function(e){ if (!e.target.closest('.ag-way__toggle')) btn.click(); });
+        btn.addEventListener('click', function(){
+          var open = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+          way.classList.toggle('is-open', !open);
+          if (open) {
+            body.style.height = body.scrollHeight + 'px';
+            requestAnimationFrame(function(){ body.style.height = '0px'; });
+            body.addEventListener('transitionend', function h(){ body.hidden = true; body.style.height = ''; body.removeEventListener('transitionend', h); });
+          } else {
+            body.hidden = false;
+            body.style.height = '0px';
+            requestAnimationFrame(function(){ body.style.height = body.scrollHeight + 'px'; });
+            body.addEventListener('transitionend', function h(){ body.style.height = 'auto'; body.removeEventListener('transitionend', h); });
+          }
+        });
+      });
+      /* open the first one when the nav link is used */
+      function openFromHash(){
+        if (location.hash === '#ways-to-give') {
+          var first = document.querySelector('.ag-way__toggle');
+          if (first && first.getAttribute('aria-expanded') !== 'true') first.click();
+        }
+      }
+      window.addEventListener('hashchange', openFromHash);
+      window.addEventListener('load', openFromHash);
+    })();
+
+    /* ---- Stories slider ---- */
+    (function(){
+      var el = document.querySelector('.ag-stories__swiper');
+      if (!el || !window.Swiper) return;
+      /* loop mode needs more slides than are visible: duplicate the set once */
+      var wrap = el.querySelector('.swiper-wrapper');
+      Array.prototype.slice.call(wrap.children).forEach(function(sl){ var c = sl.cloneNode(true); c.setAttribute('aria-hidden','true'); wrap.appendChild(c); });
+      new Swiper(el, {
+        slidesPerView: 1.08,
+        spaceBetween: 16,
+        loop: true,
+        loopAdditionalSlides: 2,
+        grabCursor: true,
+        speed: 700,
+        watchOverflow: false,
+        autoplay: { delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true },
+        keyboard: { enabled: true },
+        pagination: { el: '.ag-stories__pagination', clickable: true },
+        navigation: { nextEl: '.ag-stories__btn--next', prevEl: '.ag-stories__btn--prev' },
+        breakpoints: {
+          640:  { slidesPerView: 1.5, spaceBetween: 20 },
+          992:  { slidesPerView: 2,   spaceBetween: 24 },
+          1200: { slidesPerView: 3,   spaceBetween: 28 }
+        }
+      });
+    })();
+    </script>
 
     <!-- Donation Form JavaScript -->
     <script>
@@ -3450,14 +3051,6 @@ if (!phoneRegex.test(phone)) {
 
         // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', function () {
-            // Initialize progress bar animation
-            const fill = document.getElementById("uniquegoal-fill");
-            const percentText = document.getElementById("uniquegoal-percent");
-            const goalDisplay = document.getElementById("uniquegoal-goal");
-            const raisedDisplay = document.getElementById("uniquegoal-raised");
-
-
-        
             // Country selection logic
             const countryDropdown = document.querySelector('.country-dropdown');
             const countrySelected = countryDropdown.querySelector('.dropdown-selected');
