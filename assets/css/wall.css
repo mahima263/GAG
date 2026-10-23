@@ -1,0 +1,60 @@
+/* ===== Wall of Donors page ===== */
+.wall-page .header .btn-getstarted:first-child { background: var(--gtu-brick) !important; color: #fff !important; }
+.wall-hero { position: relative; background: var(--gtu-brown); color: #fff; padding: 88px 0 72px; text-align: center; overflow: hidden; }
+.wall-hero::before { content: ""; position: absolute; inset: 0; background: url('../closing-bg.jpg') center/cover no-repeat; opacity: .22; }
+.wall-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(66,30,24,.2), rgba(66,30,24,.85)); }
+.wall-hero .container { position: relative; z-index: 1; }
+.wall-hero__eyebrow { display: inline-flex !important; align-items: center; gap: 16px; color: var(--gtu-peach) !important; }
+.wall-hero__eyebrow::before, .wall-hero__eyebrow::after { content: ""; width: 44px; height: 1.5px; background: var(--gtu-gold); }
+.wall-hero__title { font-family: "Libre Baskerville", Georgia, serif !important; font-size: 60px; font-weight: 700; color: #fff; margin: 6px 0 14px; letter-spacing: -.01em; }
+.wall-hero__lead { max-width: 780px; margin: 0 auto; font-size: 19px; line-height: 1.55; color: rgba(255,255,255,.9); }
+.wall-stats { display: flex; justify-content: center; gap: 18px; margin-top: 40px; flex-wrap: wrap; }
+.wall-stat { min-width: 220px; padding: 18px 28px; border-radius: 12px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(4px); }
+.wall-stat__n { display: block; font-size: 40px; font-weight: 900; color: var(--gtu-peach); line-height: 1; font-variant-numeric: tabular-nums; }
+.wall-stat__l { display: block; margin-top: 8px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.85); }
+
+.wall-body { background: var(--gtu-cream); padding: 44px 0 96px; }
+.wall-tabs { position: relative; display: flex; justify-content: center; gap: 4px; background: #fff; border: 1px solid var(--gtu-line); border-radius: 999px; padding: 5px; max-width: 760px; margin: 0 auto 36px; box-shadow: 0 18px 40px rgba(66,30,24,.14); z-index: 2; }
+.wall-tab { position: relative; z-index: 1; flex: 1; border: 0; background: transparent; padding: 14px 20px; border-radius: 999px; font-size: 14px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--gtu-brown); cursor: pointer; transition: color .25s; }
+.wall-tab.is-active { color: #fff; }
+.wall-tabs__ink { position: absolute; top: 5px; bottom: 5px; left: 0; width: 0; border-radius: 999px; background: var(--gtu-brick); transition: transform .35s cubic-bezier(.4,.1,.2,1), width .35s; }
+.wall-tools { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 26px; flex-wrap: wrap; }
+.wall-search { display: flex; align-items: center; gap: 10px; flex: 1 1 320px; max-width: 460px; background: #fff; border: 1.5px solid #d9cbc0; border-radius: 999px; padding: 0 18px; }
+.wall-search:focus-within { border-color: var(--gtu-brick); box-shadow: 0 0 0 3px rgba(171,69,49,.12); }
+.wall-search svg { width: 18px; height: 18px; fill: none; stroke: var(--gtu-brick); stroke-width: 2; stroke-linecap: round; flex: 0 0 18px; }
+.wall-search input { flex: 1; border: 0 !important; outline: 0; background: transparent !important; padding: 13px 0 !important; font-size: 15px !important; color: var(--gtu-ink) !important; box-shadow: none !important; }
+.wall-count { margin: 0; font-size: 14px; font-weight: 700; color: var(--gtu-muted); letter-spacing: .04em; }
+.wall-count span { color: var(--gtu-brick); font-size: 16px; }
+.wall-panel { display: none; } .wall-panel.is-active { display: block; }
+.wall-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px 18px; }
+.wall-name { position: relative; background: #fff; border: 1px solid var(--gtu-line); border-radius: 8px; padding: 12px 16px 12px 18px; font-size: 15px; font-weight: 600; color: var(--gtu-brown); transition: transform .2s, box-shadow .2s, border-color .2s; }
+.wall-name::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 3px; background: var(--gtu-gold); opacity: 0; transition: opacity .2s; }
+.wall-name:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(66,30,24,.10); border-color: #e3cfb9; }
+.wall-name:hover::before { opacity: 1; }
+.wall-letter { grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; margin: 18px 0 2px; font-size: 13px; font-weight: 900; letter-spacing: .2em; color: var(--gtu-brick); }
+.wall-letter::after { content: ""; flex: 1; height: 1px; background: #e8d9c6; }
+.wall-letter:first-child { margin-top: 0; }
+.wall-name--anon { grid-column: 1 / -1; text-align: center; background: var(--gtu-peach); border-color: #efdcc4; color: var(--gtu-brown); font-style: italic; margin-top: 18px; }
+.wall-empty { text-align: center; color: var(--gtu-muted); padding: 40px 0; font-size: 16px; }
+.wall-cta { text-align: center; margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--gtu-line); }
+.wall-cta p { font-family: "Libre Baskerville", Georgia, serif; font-size: 24px; color: var(--gtu-brown); margin: 0 0 18px; }
+.wall-cta .gtu-btn { background: var(--gtu-brick); color: #fff; }
+.wall-cta .gtu-btn:hover { background: var(--gtu-brick-dark); color: #fff; }
+@media (max-width: 1199px) { .wall-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 991px) {
+  .wall-hero { padding: 64px 0 60px; } .wall-hero__title { font-size: 42px; } .wall-hero__lead { font-size: 16px; }
+  .wall-stat { min-width: 160px; padding: 14px 18px; } .wall-stat__n { font-size: 30px; } .wall-stat__l { font-size: 10.5px; }
+  .wall-tabs { margin-top: 0; } .wall-tab { padding: 12px 10px; font-size: 12px; letter-spacing: .04em; }
+  .wall-grid { grid-template-columns: repeat(2, 1fr); gap: 8px 12px; }
+}
+@media (max-width: 600px) {
+  .wall-hero__title { font-size: 34px; }
+  .wall-stats { gap: 10px; } .wall-stat { flex: 1 1 140px; }
+  .wall-tabs { flex-direction: column; border-radius: 16px; margin-top: 0; padding: 6px; }
+  .wall-tab { text-align: center; }
+  .wall-tabs__ink { display: none; } .wall-tab.is-active { background: var(--gtu-brick); }
+  .wall-grid { grid-template-columns: 1fr; }
+  .wall-cta p { font-size: 20px; }
+}
+
+.wall-tools--center { justify-content: center; margin-bottom: 18px; }
