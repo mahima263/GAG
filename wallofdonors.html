@@ -2,27 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wall of Donors – Annual Giving | IIT Kanpur</title>
     <meta name="description" content="Celebrating the generous spirit of IIT Kanpur alumni and well-wishers through Annual Giving.">
-    <link href="testimonials/IITKLogo.png" rel="icon">
-    <link href="testimonials/IITKLogo.png" rel="apple-touch-icon">
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="fonts/lato.css" rel="stylesheet">
-    <link href="assets/css/main.css" rel="stylesheet">
-    <link href="assets/css/gtu-theme.css?v=20261023p" rel="stylesheet">
-    <link href="assets/css/wall.css?v=2" rel="stylesheet">
+
+    <!-- Favicons -->
+    <link rel="icon" href="assets/img/brand/IITKLogo.png">
+    <link rel="apple-touch-icon" href="assets/img/brand/IITKLogo.png">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <link rel="stylesheet" href="assets/css/annual-giving.css">
+    <link rel="stylesheet" href="assets/css/wall.css">
 </head>
+
 <body class="wall-page">
+
+    <!-- ================= Header ================= -->
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container position-relative d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-                <img class="logo-img logo-lockup" src="assets/gtu/GTU_IITK_Black_82@2x.png" srcset="assets/gtu/GTU_IITK_Black_82@1x.png 1x, assets/gtu/GTU_IITK_Black_82@2x.png 2x, assets/gtu/GTU_IITK_Black_82@3x.png 3x" alt="IIT Kanpur | Greater Than Us">
-
+                <img src="assets/img/brand/GTU_IITK_Black_82@2x.png"
+                     srcset="assets/img/brand/GTU_IITK_Black_82@1x.png 1x, assets/img/brand/GTU_IITK_Black_82@2x.png 2x, assets/img/brand/GTU_IITK_Black_82@3x.png 3x"
+                     alt="IIT Kanpur | Greater Than Us">
             </a>
 
             <nav id="navmenu" class="navmenu">
@@ -32,179 +37,20 @@
                     <li><a href="index.html#stories">Stories of Possibility</a></li>
                     <li><a href="index.html#ways-to-give">Ways to Contribute</a></li>
                 </ul>
-                <i class="mobile-nav-toggle d-xl-none" aria-label="Menu"><svg class="ag-burger" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></i>
+                <button type="button" class="mobile-nav-toggle d-xl-none" aria-label="Menu">
+                    <svg class="ag-burger" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
             </nav>
 
             <div class="d-flex gap-2">
-                <a class="btn-getstarted d-none d-sm-block" href="wallofdonors.html">
-                    Wall Of Donors
-                </a>
-                <a class="btn-getstarted d-none d-sm-block" href="index.html#donation-form">
-                    Make a Gift
-                </a>
+                <a class="btn-getstarted d-none d-sm-block" href="wallofdonors.html">Wall Of Donors</a>
+                <a class="btn-getstarted d-none d-sm-block" href="index.html#donation-form">Make a Gift</a>
             </div>
-           
         </div>
     </header>
 
-    <style>
-        /* Header Styles */
-        #header {
-            background: #B04B34;
-            padding: 10px 0;
-            z-index: 1002;
-        }
-
-        /* Remove underline from logo link */
-        .logo {
-            text-decoration: none !important;
-        }
-
-        .logo:hover {
-            text-decoration: none !important;
-        }
-
-        .logo-img {
-            height: 48px;
-            transition: 0.3s ease;
-        }
-
-        .vertical-divider {
-            width: 1px;
-            height: 34px;
-            background: #fff;
-        }
-
-        .sitename {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #fff;
-            white-space: nowrap;
-            transition: 0.3s ease;
-            text-decoration: none !important;
-        }
-
-        .btn-getstarted {
-            background: #cfa20c;
-            color: #fff;
-            font-weight: 600;
-            padding: 8px 22px;
-            border-radius: 25px;
-            text-decoration: none;
-            transition: 0.3s ease;
-            white-space: nowrap;
-            margin-left: 5px;
-        }
-
-        .btn-getstarted:hover {
-            background: #b8900a;
-            color: #fff;
-            text-decoration: none;
-        }
-
-        /* Mobile Donate Button - Fixed at Bottom */
-        .mobile-donate-btn {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #B04B34, #c45e46);
-            color: white;
-            border: none;
-            font-size: 1.2rem;
-            font-weight: 700;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 9999;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            letter-spacing: 0.5px;
-        }
-
-        .mobile-donate-btn:hover {
-            background: linear-gradient(135deg, #9a3f2d, #b04b34);
-            transform: translateY(-2px);
-            box-shadow: 0 -7px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .mobile-donate-btn:active {
-            transform: translateY(0);
-        }
-
-        .mobile-donate-btn i {
-            font-size: 1.3rem;
-            margin-right: 10px;
-        }
-
-        /* Mobile specific adjustments */
-        @media (max-width: 768px) {
-            .mobile-donate-btn {
-                display: flex;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .mobile-donate-btn {
-                padding: 16px;
-                font-size: 1.1rem;
-            }
-        }
-
-        @media (max-width: 991px) {
-            .logo-img {
-                height: 34px;
-            }
-
-            .sitename {
-                font-size: 1rem;
-            }
-
-            .btn-getstarted {
-                padding: 6px 15px;
-                font-size: 0.9rem;
-            }
-
-            .mobile-nav-toggle {
-                font-size: 1.6rem;
-                color: #fff;
-                cursor: pointer;
-                margin-left: 10px;
-            }
-        }
-        
-        .navmenu a {
-            text-decoration: none !important;
-            border-bottom: none !important;
-        }
-
-        .navmenu a.active {
-            border-bottom: none !important;
-            text-decoration: none !important;
-        }
-        
-        /* Flag icon specific styles */
-        .flag-icon {
-            display: inline-block;
-            width: 20px;
-            height: 15px;
-            background-size: contain;
-            background-position: 50%;
-            background-repeat: no-repeat;
-            margin-right: 8px;
-        }
-        
-        .option .fas.fa-globe-americas {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-    </style>
-
     <main class="main">
+
         <section class="wall-hero">
             <div class="container">
                 <span class="gtu-eyebrow wall-hero__eyebrow"><span>Annual Giving</span></span>
@@ -243,92 +89,51 @@
                 </div>
             </div>
         </section>
+
     </main>
 
+    <!-- ================= Footer ================= -->
     <footer id="footer" class="footer">
         <div class="container footer-top">
             <div class="row gy-4">
                 <div class="col-lg-4 col-md-12 footer-about">
                     <a href="index.html" class="logo d-flex align-items-center">
-                        <img class="logo-lockup-foot" src="assets/gtu/GTU_IITK_White_82@2x.png" srcset="assets/gtu/GTU_IITK_White_82@1x.png 1x, assets/gtu/GTU_IITK_White_82@2x.png 2x, assets/gtu/GTU_IITK_White_82@3x.png 3x" alt="IIT Kanpur | Greater Than Us">
-
+                        <img src="assets/img/brand/GTU_IITK_White_82@2x.png"
+                             srcset="assets/img/brand/GTU_IITK_White_82@1x.png 1x, assets/img/brand/GTU_IITK_White_82@2x.png 2x, assets/img/brand/GTU_IITK_White_82@3x.png 3x"
+                             alt="IIT Kanpur | Greater Than Us">
                     </a>
                     <div class="social-links d-flex mt-3">
-                        <a href="https://x.com/DoRA_IITK"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.1 8.1L23 22h-6.6l-5.2-6.8L5.3 22H2.2l7.6-8.7L1.5 2h6.8l4.7 6.2L18.9 2zm-1.1 18h1.7L7.3 3.9H5.5L17.8 20z"/></svg></a>
-                        <a href="https://www.facebook.com/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.4-3.3h-3.2V8.4c0-.9.3-1.6 1.6-1.6h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.3h2.8V22h3.4z"/></svg></a>
-                        <a href="https://www.youtube.com/channel/UCVAeCAtvJbYXM0lW0EiDf9A"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.5 3.7 12 3.7 12 3.7s-4.5 0-7.8.2c-.5.1-1.5.1-2.3 1C1.2 5.6 1 7.2 1 7.2S.8 9.1.8 11v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.6.2 7.6.2s4.5 0 7.8-.2c.5-.1 1.5-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.7 15V8.3l6.1 3.4L9.7 15z"/></svg></a>
-                        <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQG3tl_dZIfUWAAAAZvU5WygM_VbsmyxYy_pzZz8AIqu_-uFWifPcOqNctePckACVTPA-PAWK2sGOqU_UlS5zQpMXk5UOghRFITJToNfVELXiWOR5_YAnIJoEnyecwmDVTac4to=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fdean-of-resources-and-alumni-iit-kanpur-32a377198%2F"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 2H3.6C2.7 2 2 2.7 2 3.6v16.8c0 .9.7 1.6 1.6 1.6h16.8c.9 0 1.6-.7 1.6-1.6V3.6c0-.9-.7-1.6-1.6-1.6zM8 19H5V9.5h3V19zM6.5 8.2c-1 0-1.7-.8-1.7-1.7s.8-1.7 1.7-1.7 1.7.8 1.7 1.7-.7 1.7-1.7 1.7zM19 19h-3v-4.6c0-1.1 0-2.5-1.5-2.5s-1.8 1.2-1.8 2.4V19h-3V9.5h2.9v1.3c.4-.8 1.4-1.5 2.8-1.5 3 0 3.6 2 3.6 4.6V19z"/></svg></a>
+                        <a href="https://x.com/DoRA_IITK" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.1 8.1L23 22h-6.6l-5.2-6.8L5.3 22H2.2l7.6-8.7L1.5 2h6.8l4.7 6.2L18.9 2zm-1.1 18h1.7L7.3 3.9H5.5L17.8 20z"/></svg></a>
+                        <a href="https://www.facebook.com/" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8.2h2.8l.4-3.3h-3.2V8.4c0-.9.3-1.6 1.6-1.6h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.3h2.8V22h3.4z"/></svg></a>
+                        <a href="https://www.youtube.com/channel/UCVAeCAtvJbYXM0lW0EiDf9A" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C16.5 3.7 12 3.7 12 3.7s-4.5 0-7.8.2c-.5.1-1.5.1-2.3 1C1.2 5.6 1 7.2 1 7.2S.8 9.1.8 11v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.6.2 7.6.2s4.5 0 7.8-.2c.5-.1 1.5-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V11c0-1.9-.2-3.8-.2-3.8zM9.7 15V8.3l6.1 3.4L9.7 15z"/></svg></a>
+                        <a href="https://www.linkedin.com/in/dean-of-resources-and-alumni-iit-kanpur-32a377198/" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 2H3.6C2.7 2 2 2.7 2 3.6v16.8c0 .9.7 1.6 1.6 1.6h16.8c.9 0 1.6-.7 1.6-1.6V3.6c0-.9-.7-1.6-1.6-1.6zM8 19H5V9.5h3V19zM6.5 8.2c-1 0-1.7-.8-1.7-1.7s.8-1.7 1.7-1.7 1.7.8 1.7 1.7-.7 1.7-1.7 1.7zM19 19h-3v-4.6c0-1.1 0-2.5-1.5-2.5s-1.8 1.2-1.8 2.4V19h-3V9.5h2.9v1.3c.4-.8 1.4-1.5 2.8-1.5 3 0 3.6 2 3.6 4.6V19z"/></svg></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 footer-contact text-center text-md-start">
                     <h4>Contact Us</h4>
-                    <p>Office of Dean of Resources & Alumni
-
-
-
-                    <p> Faculty Building Annexe Third floor</p>
-                    <p class="mt-2"> IIT Kanpur - 208016, Uttar Pradesh, India</p>
-                    </p>
-
-                    <p><strong>Email:</strong> <span><a href="mailto:dean@dora.iitk.ac.in"
-                                class="hover-underline">dean@dora.iitk.ac.in</a></span></p>
+                    <p>Office of Dean of Resources &amp; Alumni</p>
+                    <p>Faculty Building Annexe Third floor</p>
+                    <p class="mt-2">IIT Kanpur - 208016, Uttar Pradesh, India</p>
+                    <p><strong>Email:</strong> <span><a href="mailto:dean@dora.iitk.ac.in">dean@dora.iitk.ac.in</a></span></p>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6 footer-links">
                     <h4>Useful Links</h4>
-                   
-                  
-                    <a href="testimonials/Annual Giving Report 2024-Final Oct 2025.pdf" target="_blank"
-                        class="guidebook-btn mt-2">Impact Report</a>
-                        <a href="https://iitkfoundation.org/faqs-ways-to-donate/" target="_blank" rel="noopener"
-                        class="guidebook-btn mt-3">Donation Guidebook USA</a>
+                    <a href="assets/docs/Annual Giving Report 2024-Final Oct 2025.pdf" target="_blank" class="guidebook-btn mt-2">Impact Report</a>
+                    <a href="https://iitkfoundation.org/faqs-ways-to-donate/" target="_blank" rel="noopener" class="guidebook-btn mt-3">Donation Guidebook USA</a>
                 </div>
             </div>
         </div>
         <div class="container copyright text-center mt-4">
-            <p>© <span>Copyright</span> <strong class="px-1">IITKanpur</strong> <span>All Rights Reserved</span></p>
+            <p>&copy; <span>Copyright</span> <strong class="px-1">IITKanpur</strong> <span>All Rights Reserved</span></p>
         </div>
-        <style>
-            .guidebook-btn {
-                display: inline-block;
-                padding: 8px 16px;
-                background-color: #B04B34;
-                color: #fff;
-                border-radius: 5px;
-                text-decoration: none;
-                font-weight: 500;
-                min-width: 200px;        /* 👈 Same width for both buttons */
-
-                transition: background-color 0.3s;
-            }
-
-            .guidebook-btn:hover {
-                background-color: #b33a1f;
-                color: #eef2ff;
-                text-decoration: none;
-            }
-            
-            @media (max-width: 768px) {
-                .footer-contact, .footer-links {
-                    text-align: center !important;
-                    margin-top: 20px;
-                }
-                
-                .footer .row {
-                    text-align: center;
-                }
-                
-                .social-links {
-                    justify-content: center;
-                }
-            }
-        </style>
     </footer>
 
+    <!-- Vendor JS -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/donors.js?v=1"></script>
-    <script src="assets/js/wall.js?v=2"></script>
+
+    <!-- Site JS -->
+    <script src="assets/js/site.js"></script>
+    <script src="assets/js/donors.js"></script>
+    <script src="assets/js/wall.js"></script>
 </body>
 </html>

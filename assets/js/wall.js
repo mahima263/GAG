@@ -1,22 +1,31 @@
 (function(){
   var cur = window.DONORS_CURRENT || [], prev = window.DONORS_PREVIOUS || [];
   var sortOn = window.WALL_SORT !== false;
+  /* Each entry is "Name" or "Name | B.Tech/CSE/1989" (anything after the first | is shown under the name) */
+  function parse(entry){
+    var parts = String(entry).split('|');
+    return { name: parts[0].trim(), detail: parts.slice(1).join('|').trim() };
+  }
   function prep(list){
-    var named = list.filter(function(n){ return n && !/^anonymous$/i.test(n.trim()); }).map(function(n){ return n.trim(); });
-    var anon = list.length - named.length;
-    if (sortOn) named.sort(function(a,b){ return a.localeCompare(b, 'en', { sensitivity: 'base' }); });
+    var all = list.map(parse).filter(function(d){ return d.name; });
+    var named = all.filter(function(d){ return !/^anonymous$/i.test(d.name); });
+    var anon = all.length - named.length;
+    if (sortOn) named.sort(function(a,b){ return a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }); });
     return { named: named, anon: anon };
   }
   function initial(n){ var m = n.match(/[A-Za-z]/); return m ? m[0].toUpperCase() : '#'; }
   function render(ul, data, q){
     ul.innerHTML = '';
     var frag = document.createDocumentFragment(), shown = 0, lastL = '';
-    data.named.forEach(function(n){
-      if (q && n.toLowerCase().indexOf(q) === -1) return;
+    data.named.forEach(function(d){
+      var n = d.name;
+      if (q && (n + ' ' + d.detail).toLowerCase().indexOf(q) === -1) return;
       var L = initial(n);
       if (!q && L !== lastL) { var h = document.createElement('li'); h.className = 'wall-letter'; h.textContent = L; h.setAttribute('aria-hidden','true'); frag.appendChild(h); lastL = L; }
       var li = document.createElement('li'); li.className = 'wall-name';
-      li.textContent = n; frag.appendChild(li); shown++;
+      var nm = document.createElement('span'); nm.className = 'wall-name__n'; nm.textContent = n; li.appendChild(nm);
+      if (d.detail) { var dt = document.createElement('span'); dt.className = 'wall-name__d'; dt.textContent = d.detail; li.appendChild(dt); }
+      frag.appendChild(li); shown++;
     });
     if (data.anon && (!q || 'anonymous'.indexOf(q) !== -1)) {
       var a = document.createElement('li'); a.className = 'wall-name wall-name--anon';

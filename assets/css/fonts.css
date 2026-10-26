@@ -1,0 +1,13 @@
+/* Self-hosted web fonts (Latin subsets, woff2 only) */
+
+/* Lato – body + headings */
+@font-face { font-family: "Lato"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/lato-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Lato"; font-style: italic; font-weight: 400; font-display: swap; src: url("../fonts/lato-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Lato"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/lato-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Lato"; font-style: italic; font-weight: 700; font-display: swap; src: url("../fonts/lato-latin-700-italic.woff2") format("woff2"); }
+@font-face { font-family: "Lato"; font-style: normal; font-weight: 900; font-display: swap; src: url("../fonts/lato-latin-900-normal.woff2") format("woff2"); }
+
+/* Libre Baskerville – display headings (Stories, Rewards, Wall of Donors) */
+@font-face { font-family: "Libre Baskerville"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/libre-baskerville-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Libre Baskerville"; font-style: italic; font-weight: 400; font-display: swap; src: url("../fonts/libre-baskerville-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Libre Baskerville"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/libre-baskerville-latin-700-normal.woff2") format("woff2"); }

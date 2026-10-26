@@ -1,7 +1,7 @@
-/* ===== Wall of Donors page ===== */
+/* ===== Wall of Donors page (loaded after annual-giving.css) ===== */
 .wall-page .header .btn-getstarted:first-child { background: var(--gtu-brick) !important; color: #fff !important; }
 .wall-hero { position: relative; background: var(--gtu-brown); color: #fff; padding: 88px 0 72px; text-align: center; overflow: hidden; }
-.wall-hero::before { content: ""; position: absolute; inset: 0; background: url('../closing-bg.jpg') center/cover no-repeat; opacity: .22; }
+.wall-hero::before { content: ""; position: absolute; inset: 0; background: url("../img/backgrounds/closing-bg.jpg") center/cover no-repeat; opacity: .22; }
 .wall-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(66,30,24,.2), rgba(66,30,24,.85)); }
 .wall-hero .container { position: relative; z-index: 1; }
 .wall-hero__eyebrow { display: inline-flex !important; align-items: center; gap: 16px; color: var(--gtu-peach) !important; }
@@ -19,10 +19,6 @@
 .wall-tab.is-active { color: #fff; }
 .wall-tabs__ink { position: absolute; top: 5px; bottom: 5px; left: 0; width: 0; border-radius: 999px; background: var(--gtu-brick); transition: transform .35s cubic-bezier(.4,.1,.2,1), width .35s; }
 .wall-tools { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 26px; flex-wrap: wrap; }
-.wall-search { display: flex; align-items: center; gap: 10px; flex: 1 1 320px; max-width: 460px; background: #fff; border: 1.5px solid #d9cbc0; border-radius: 999px; padding: 0 18px; }
-.wall-search:focus-within { border-color: var(--gtu-brick); box-shadow: 0 0 0 3px rgba(171,69,49,.12); }
-.wall-search svg { width: 18px; height: 18px; fill: none; stroke: var(--gtu-brick); stroke-width: 2; stroke-linecap: round; flex: 0 0 18px; }
-.wall-search input { flex: 1; border: 0 !important; outline: 0; background: transparent !important; padding: 13px 0 !important; font-size: 15px !important; color: var(--gtu-ink) !important; box-shadow: none !important; }
 .wall-count { margin: 0; font-size: 14px; font-weight: 700; color: var(--gtu-muted); letter-spacing: .04em; }
 .wall-count span { color: var(--gtu-brick); font-size: 16px; }
 .wall-panel { display: none; } .wall-panel.is-active { display: block; }
@@ -31,13 +27,16 @@
 .wall-name::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 3px; border-radius: 3px; background: var(--gtu-gold); opacity: 0; transition: opacity .2s; }
 .wall-name:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(66,30,24,.10); border-color: #e3cfb9; }
 .wall-name:hover::before { opacity: 1; }
+.wall-name__n { display: block; }
+.wall-name__d { display: block; margin-top: 3px; font-size: 13px; font-weight: 700; letter-spacing: .02em; color: var(--gtu-brick); }
+.wall-name--anon .wall-name__n { display: inline; }
 .wall-letter { grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; margin: 18px 0 2px; font-size: 13px; font-weight: 900; letter-spacing: .2em; color: var(--gtu-brick); }
 .wall-letter::after { content: ""; flex: 1; height: 1px; background: #e8d9c6; }
 .wall-letter:first-child { margin-top: 0; }
 .wall-name--anon { grid-column: 1 / -1; text-align: center; background: var(--gtu-peach); border-color: #efdcc4; color: var(--gtu-brown); font-style: italic; margin-top: 18px; }
 .wall-empty { text-align: center; color: var(--gtu-muted); padding: 40px 0; font-size: 16px; }
 .wall-cta { text-align: center; margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--gtu-line); }
-.wall-cta p { font-family: "Libre Baskerville", Georgia, serif; font-size: 24px; color: var(--gtu-brown); margin: 0 0 18px; }
+.wall-cta p { font-size: 24px; color: var(--gtu-brown); margin: 0 0 18px; }
 .wall-cta .gtu-btn { background: var(--gtu-brick); color: #fff; }
 .wall-cta .gtu-btn:hover { background: var(--gtu-brick-dark); color: #fff; }
 @media (max-width: 1199px) { .wall-grid { grid-template-columns: repeat(3, 1fr); } }
